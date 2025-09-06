@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Restaurant Project</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next_bt_welcome">Next</string>
+    <string name="get_started_bt_welcome">Get Started</string>
+    <string name="title_splash_tv">Title</string>
+    <string name="text_splash_tv">Text</string>
 </resources>
