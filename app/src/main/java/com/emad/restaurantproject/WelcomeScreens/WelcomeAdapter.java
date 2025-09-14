@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.WelcomeScreen;
+package com.emad.restaurantproject.WelcomeScreens;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

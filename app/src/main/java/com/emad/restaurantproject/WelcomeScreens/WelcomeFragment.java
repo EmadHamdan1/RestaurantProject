@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.WelcomeScreen;
+package com.emad.restaurantproject.WelcomeScreens;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.databinding.FragmentWelcomeBinding;
 
 /**

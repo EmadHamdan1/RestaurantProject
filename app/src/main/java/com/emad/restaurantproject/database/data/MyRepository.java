@@ -3,6 +3,7 @@ package com.emad.restaurantproject.database.data;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Query;
 
 import com.emad.restaurantproject.database.dao.CartItemDao;
 import com.emad.restaurantproject.database.dao.CategoryDao;
@@ -66,6 +67,10 @@ public class MyRepository {
         return userDao.getUserById(userId);
     }
 
+    public User getUserByEmail(String email) {
+        return userDao.getUserByEmail(email);
+    }
+
 
     // Category Method
 
@@ -91,6 +96,10 @@ public class MyRepository {
 
     public LiveData<List<Category>> getAllCategories() {
         return categoryDao.getAllCategories();
+    }
+
+    public List<Category> getAllCategoriesList() {
+        return categoryDao.getAllCategoriesList();
     }
 
 
@@ -122,10 +131,13 @@ public class MyRepository {
         return menuItemDao.getAllMenuItems();
     }
 
+    public LiveData<List<MenuItem>> getMenuItemsByCategoryId(int categoryId) {
+        return menuItemDao.getMenuItemsByCategoryId(categoryId);
+    }
+
     public LiveData<MenuItem> getMenuItemById(int menuItemId) {
         return menuItemDao.getMenuItemById(menuItemId);
     }
-
 
     // Order Method
 

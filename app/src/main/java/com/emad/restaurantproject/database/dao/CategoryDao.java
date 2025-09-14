@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Dao
 public interface CategoryDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertCategory(Category category);
 
     @Update
@@ -25,6 +26,9 @@ public interface CategoryDao {
 
     @Query("SELECT * FROM category_table")
     LiveData<List<Category>> getAllCategories();
+
+    @Query("SELECT * FROM category_table")
+    List<Category> getAllCategoriesList();
 
     @Query("SELECT * FROM category_table WHERE categoryId =:categoryId")
     LiveData<Category> getCategoryById(int categoryId);

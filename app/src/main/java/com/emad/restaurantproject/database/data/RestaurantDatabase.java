@@ -9,6 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.dao.CartItemDao;
 import com.emad.restaurantproject.database.dao.CategoryDao;
 import com.emad.restaurantproject.database.dao.MenuItemDao;
@@ -57,6 +58,7 @@ public abstract class RestaurantDatabase extends RoomDatabase {
                             .fallbackToDestructiveMigration()
                             .addCallback(roomCallback)
                             .build();
+
                 }
             }
         }
@@ -68,13 +70,17 @@ public abstract class RestaurantDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            db.execSQL("INSERT INTO user_table (name, email, password, userType) VALUES ('Admin', 'admin@gmail.com', 'adminadmin', 'owner')");
 
-            Executors.newSingleThreadExecutor().execute(() -> {
-                CategoryDao dao = INSTANCE.categoryDao();
+            databaseWriteExecutor.execute(() -> {
 
-                dao.insertCategory(new Category("Food1"));
-                dao.insertCategory(new Category("Food2"));
-                dao.insertCategory(new Category("Food3"));
+                CategoryDao categoryDao = INSTANCE.categoryDao();
+
+                categoryDao.insertCategory(new Category("Main Dishes", R.drawable.main_dish));
+                categoryDao.insertCategory(new Category("Starters", R.drawable.starters));
+                categoryDao.insertCategory(new Category("Drinks", R.drawable.drinks));
+                categoryDao.insertCategory(new Category("Desserts", R.drawable.desserts));
+                categoryDao.insertCategory(new Category("Extras", R.drawable.extras));
 
             });
         }

@@ -46,6 +46,10 @@ public class MyViewModel extends AndroidViewModel {
         return repository.getUserById(userId);
     }
 
+    public User getUserByEmail(String email) {
+        return repository.getUserByEmail(email);
+    }
+
 
     // Category Method
 
@@ -72,6 +76,11 @@ public class MyViewModel extends AndroidViewModel {
         return repository.getCategoryById(categoryId);
     }
 
+    public List<Category> getAllCategoriesList() {
+        return repository.getAllCategoriesList();
+    }
+
+
     // MenuItem Method
 
     public void insertMenuItem(MenuItem item) {
@@ -90,10 +99,13 @@ public class MyViewModel extends AndroidViewModel {
         return repository.getAllMenuItems();
     }
 
+    public LiveData<List<MenuItem>> getMenuItemsByCategoryId(int categoryId) {
+        return repository.getMenuItemsByCategoryId(categoryId);
+    }
+
     public LiveData<MenuItem> getMenuItemById(int menuItemId) {
         return repository.getMenuItemById(menuItemId);
     }
-
 
     // Order Method
 

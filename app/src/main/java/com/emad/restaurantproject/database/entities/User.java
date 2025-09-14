@@ -19,24 +19,29 @@ public class User {
     private String email;
     private String password;
     private String userType;
-    private Bitmap photo;
+    private String photoUri;
 
-    public User(String name, String address, String email, String password, String userType, Bitmap photo) {
+    public User(String name, String address, String email, String password, String userType, String photoUri) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.password = password;
         this.userType = userType;
-        this.photo = photo;
+        this.photoUri = photoUri;
     }
 
     @Ignore
-    public User(String name, String address, String email, String password, String userType) {
+    public User(String name, String email, String password, String userType) {
         this.name = name;
-        this.address = address;
         this.email = email;
         this.password = password;
         this.userType = userType;
+    }
+
+    @Ignore
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public int getUserId() {
@@ -87,11 +92,24 @@ public class User {
         this.userType = userType;
     }
 
-    public Bitmap getPhoto() {
-        return photo;
+    public String getPhotoUri() {
+        return photoUri;
     }
 
-    public void setPhoto(Bitmap photo) {
-        this.photo = photo;
+    public void setPhotoUri(String photoUri) {
+        this.photoUri = photoUri;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userType='" + userType + '\'' +
+                ", photoUri=" + photoUri +
+                '}';
     }
 }

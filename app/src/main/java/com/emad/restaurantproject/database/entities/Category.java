@@ -10,17 +10,16 @@ import androidx.room.TypeConverters;
 import com.emad.restaurantproject.utils.Converters;
 
 @Entity(tableName = "category_table")
-@TypeConverters(Converters.class)
 public class Category {
 
     @PrimaryKey(autoGenerate = true)
     private int categoryId;
     private String name;
-    private Bitmap image;
+    private int imageId;
 
-    public Category(String name, Bitmap image) {
+    public Category(String name, int imageId) {
         this.name = name;
-        this.image = image;
+        this.imageId = imageId;
     }
 
     @Ignore
@@ -44,11 +43,20 @@ public class Category {
         this.name = name;
     }
 
-    public Bitmap getImage() {
-        return image;
+    public int getImageId() {
+        return imageId;
     }
 
-    public void setImage(Bitmap image) {
-        this.image = image;
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                ", imageId=" + imageId +
+                '}';
     }
 }

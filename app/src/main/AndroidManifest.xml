@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +18,38 @@
         android:theme="@style/Theme.RestaurantProject"
         tools:targetApi="31">
         <activity
-            android:name=".WelcomeScreen.WelcomeActivity"
+            android:name=".CustomerScreens.DetailsMenuItemActivity"
             android:exported="false" />
         <activity
-            android:name=".WelcomeScreen.ScreenSplash"
+            android:name=".OwnerScreens.UpdateMenuItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerScreens.AddMenuItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AuthScreens.ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerScreens.OwnerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerScreens.HomeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".AuthScreens.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AuthScreens.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AuthScreens.AuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WelcomeScreens.WelcomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WelcomeScreens.ScreenSplash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

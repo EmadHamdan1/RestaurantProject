@@ -6,4 +6,19 @@
     <string name="get_started_bt_welcome">Get Started</string>
     <string name="title_splash_tv">Title</string>
     <string name="text_splash_tv">Text</string>
+    <string name="sign_up_tv_register">Sign Up</string>
+    <string name="create_account_tv_register">Create Account</string>
+    <string name="name_hint_register">Name</string>
+    <string name="email_hint_register">Email</string>
+    <string name="password_hint__register">Password</string>
+    <string name="sign_up_bt_register">Sign Up</string>
+    <string name="already_have_an_account_tv_register">Already have an account ?</string>
+    <string name="sign_in_tv_register">Sign in</string>
+    <string name="login_here_tv_login">Login here</string>
+    <string name="welcome_back_you_ve_been_missed_tv_login">Welcome back you`ve been missed!</string>
+    <string name="email_hint_login">Email</string>
+    <string name="password_hint_login">Password</string>
+    <string name="forget_your_password_tv_login">Forget your password ?</string>
+    <string name="sign_in_bt_login">Sign in</string>
+    <string name="create_new_account_tv_login">Create new account</string>
 </resources>

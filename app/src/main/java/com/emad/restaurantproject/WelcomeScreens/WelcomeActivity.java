@@ -1,5 +1,7 @@
-package com.emad.restaurantproject.WelcomeScreen;
+package com.emad.restaurantproject.WelcomeScreens;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -11,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.emad.restaurantproject.AuthScreens.AuthActivity;
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.databinding.ActivityWelcomeBinding;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -20,6 +23,9 @@ import java.util.ArrayList;
 public class WelcomeActivity extends AppCompatActivity {
 
     ActivityWelcomeBinding binding;
+
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,15 @@ public class WelcomeActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        sharedPref = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+
+        binding.fragmentContainerVp.setOffscreenPageLimit(3);
+
+        if (isLoggedIn()) {
+            startActivity(new Intent(getBaseContext(), AuthActivity.class));
+            finish();
+        }
 
         CreateFragments();
 
@@ -63,12 +78,13 @@ public class WelcomeActivity extends AppCompatActivity {
     void HandleNextButton() {
         binding.nextBt.setOnClickListener(view -> {
 
-            if (binding.fragmentContainerVp.getCurrentItem() == 0) {
-                binding.fragmentContainerVp.setCurrentItem(1);
-
-            } else if (binding.fragmentContainerVp.getCurrentItem() == 1) {
-                binding.fragmentContainerVp.setCurrentItem(2);
-
+            int currentItem = binding.fragmentContainerVp.getCurrentItem();
+            if (currentItem < 2) {
+                binding.fragmentContainerVp.setCurrentItem(currentItem + 1);
+            } else {
+                startActivity(new Intent(this, AuthActivity.class));
+                SaveSkipWelcome();
+                finish();
             }
         });
     }
@@ -99,18 +115,27 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void handleOnBackPressed() {
 
-                if (binding.fragmentContainerVp.getCurrentItem() == 2) {
-                    binding.fragmentContainerVp.setCurrentItem(1);
+                int currentItem = binding.fragmentContainerVp.getCurrentItem();
 
-                } else if (binding.fragmentContainerVp.getCurrentItem() == 1) {
-                    binding.fragmentContainerVp.setCurrentItem(0);
-
-                } else if (binding.fragmentContainerVp.getCurrentItem() == 0) {
+                if (currentItem > 0) {
+                    binding.fragmentContainerVp.setCurrentItem(currentItem - 1);
+                } else {
                     finish();
                 }
 
             }
         });
+    }
+
+
+    private boolean isLoggedIn() {
+        return sharedPref.getBoolean("isSkipWelcome", false);
+    }
+
+    void SaveSkipWelcome() {
+        editor = sharedPref.edit();
+        editor.putBoolean("isSkipWelcome", true);
+        editor.apply();
     }
 
 }
