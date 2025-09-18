@@ -1,6 +1,7 @@
 package com.emad.restaurantproject.database.data;
 
 import android.app.Application;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -14,14 +15,25 @@ import com.emad.restaurantproject.database.entities.OrderItem;
 import com.emad.restaurantproject.database.entities.User;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.logging.Handler;
 
 public class MyViewModel extends AndroidViewModel {
 
+    private LiveData<List<Order>> ordersLiveData;
+    private LiveData<List<OrderItem>> orderItemsLiveData;
+    private LiveData<List<MenuItem>> menuItemsLiveData;
     MyRepository repository;
 
     public MyViewModel(@NonNull Application application) {
         super(application);
         repository = new MyRepository(application);
+    }
+
+    public void loadAllData(int userId) {
+        ordersLiveData = repository.getOrdersByCustomerId(userId);
+        orderItemsLiveData = repository.getAllOrderItems();
+        menuItemsLiveData = repository.getAllMenuItems();
     }
 
     // User Method
@@ -99,6 +111,10 @@ public class MyViewModel extends AndroidViewModel {
         return repository.getAllMenuItems();
     }
 
+    public LiveData<List<MenuItem>> getAllMenuItemsByName(String name) {
+        return repository.getAllMenuItemsByName(name);
+    }
+
     public LiveData<List<MenuItem>> getMenuItemsByCategoryId(int categoryId) {
         return repository.getMenuItemsByCategoryId(categoryId);
     }
@@ -109,8 +125,8 @@ public class MyViewModel extends AndroidViewModel {
 
     // Order Method
 
-    public void insertOrder(Order order) {
-        repository.insertOrder(order);
+    public long insertOrder(Order order) {
+        return repository.insertOrder(order);
     }
 
     public void updateOrder(Order order) {
@@ -129,6 +145,17 @@ public class MyViewModel extends AndroidViewModel {
         return repository.getOrderById(orderId);
     }
 
+    public LiveData<Order> getOrderByCustomerId(int customerId) {
+        return repository.getOrderByCustomerId(customerId);
+    }
+
+    public LiveData<List<Order>> getOrdersByCustomerId(int customerId) {
+        return repository.getOrdersByCustomerId(customerId);
+    }
+
+    public Integer getLastOrderNumberForUser(int customerId) {
+        return repository.getLastOrderNumberForUser(customerId);
+    }
 
     // OrderItem Method
 
@@ -148,8 +175,8 @@ public class MyViewModel extends AndroidViewModel {
         return repository.getAllOrderItems();
     }
 
-    public LiveData<OrderItem> getOrderItemById(int orderItemId) {
-        return repository.getOrderItemById(orderItemId);
+    public LiveData<List<OrderItem>> getOrderItemByOrderId(int orderId) {
+        return repository.getOrderItemByOrderId(orderId);
     }
 
     // CartItem Method
@@ -170,8 +197,20 @@ public class MyViewModel extends AndroidViewModel {
         return repository.getAllCartItems();
     }
 
-    public LiveData<CartItem> getCartItemById(int cartItemId) {
-        return repository.getCartItemById(cartItemId);
+    public CartItem getCartItemByMenuItemId(int menuItemId, int customerId) {
+        return repository.getCartItemByMenuItemId(menuItemId, customerId);
+    }
+
+    public List<CartItem> getCartItemByCustomerId(int customerId) {
+        return repository.getCartItemByCustomerId(customerId);
+    }
+
+    public LiveData<List<CartItem>> getCartItemByCustomerIdLive(int customerId) {
+        return repository.getCartItemByCustomerIdLive(customerId);
+    }
+
+    public void clearCart(int customerId) {
+        repository.clearCart(customerId);
     }
 
 }

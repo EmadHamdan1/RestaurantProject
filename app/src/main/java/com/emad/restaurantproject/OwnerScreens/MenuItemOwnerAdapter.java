@@ -22,6 +22,7 @@ import com.emad.restaurantproject.databinding.ItemMenuItemOwnerBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.List;
+
 public class MenuItemOwnerAdapter extends RecyclerView.Adapter<MenuItemOwnerAdapter.MenuItemViewHolder> {
 
     List<MenuItem> menuItems;
@@ -72,6 +73,19 @@ public class MenuItemOwnerAdapter extends RecyclerView.Adapter<MenuItemOwnerAdap
                 .into(holder.imageItemIv);
 
         holder.categoryMenuItemIv.setImageResource(categories.get(item.getCategoryId() - 1).getImageId());
+
+        Category category = null;
+        for (Category c : categories) {
+            if (c.getCategoryId() == item.getCategoryId()) {
+                category = c;
+                break;
+            }
+        }
+        if (category != null) {
+            holder.categoryMenuItemIv.setImageResource(category.getImageId());
+        } else {
+            holder.categoryMenuItemIv.setImageResource(R.drawable.restaurant);
+        }
 
         holder.openMenuItemIv.setOnClickListener(view -> {
 

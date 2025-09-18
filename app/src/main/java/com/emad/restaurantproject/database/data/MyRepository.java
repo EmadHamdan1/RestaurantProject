@@ -3,7 +3,6 @@ package com.emad.restaurantproject.database.data;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Query;
 
 import com.emad.restaurantproject.database.dao.CartItemDao;
 import com.emad.restaurantproject.database.dao.CategoryDao;
@@ -131,6 +130,10 @@ public class MyRepository {
         return menuItemDao.getAllMenuItems();
     }
 
+    public LiveData<List<MenuItem>> getAllMenuItemsByName(String name) {
+        return menuItemDao.getAllMenuItemsByName(name);
+    }
+
     public LiveData<List<MenuItem>> getMenuItemsByCategoryId(int categoryId) {
         return menuItemDao.getMenuItemsByCategoryId(categoryId);
     }
@@ -139,12 +142,11 @@ public class MyRepository {
         return menuItemDao.getMenuItemById(menuItemId);
     }
 
+
     // Order Method
 
-    public void insertOrder(Order order) {
-        RestaurantDatabase.databaseWriteExecutor.execute(() -> {
-            orderDao.insertOrder(order);
-        });
+    public long insertOrder(Order order) {
+        return orderDao.insertOrder(order);
     }
 
     public void updateOrder(Order order) {
@@ -167,6 +169,17 @@ public class MyRepository {
         return orderDao.getOrderById(orderId);
     }
 
+    public LiveData<Order> getOrderByCustomerId(int customerId) {
+        return orderDao.getOrderByCustomerId(customerId);
+    }
+
+    public LiveData<List<Order>> getOrdersByCustomerId(int customerId) {
+        return orderDao.getOrdersByCustomerId(customerId);
+    }
+
+    public Integer getLastOrderNumberForUser(int customerId){
+        return orderDao.getLastOrderNumberForUser(customerId);
+    }
 
     // OrderItem Method
 
@@ -192,8 +205,8 @@ public class MyRepository {
         return orderItemDao.getAllOrderItems();
     }
 
-    public LiveData<OrderItem> getOrderItemById(int orderItemId) {
-        return orderItemDao.getOrderItemById(orderItemId);
+    public LiveData<List<OrderItem>> getOrderItemByOrderId(int orderId) {
+        return orderItemDao.getOrderItemByOrderId(orderId);
     }
 
     // CartItem Method
@@ -220,8 +233,22 @@ public class MyRepository {
         return cartItemDao.getAllCartItems();
     }
 
-    public LiveData<CartItem> getCartItemById(int cartItemId) {
-        return cartItemDao.getCartItemById(cartItemId);
+    public CartItem getCartItemByMenuItemId(int menuItemId, int customerId) {
+        return cartItemDao.getCartItemByMenuItemId(menuItemId, customerId);
+    }
+
+    public List<CartItem> getCartItemByCustomerId(int customerId) {
+        return cartItemDao.getCartItemByCustomerId(customerId);
+    }
+
+    public LiveData<List<CartItem>> getCartItemByCustomerIdLive(int customerId) {
+        return cartItemDao.getCartItemByCustomerIdLive(customerId);
+    }
+
+    public void clearCart(int customerId) {
+        RestaurantDatabase.databaseWriteExecutor.execute(() -> {
+            cartItemDao.clearCart(customerId);
+        });
     }
 
 }

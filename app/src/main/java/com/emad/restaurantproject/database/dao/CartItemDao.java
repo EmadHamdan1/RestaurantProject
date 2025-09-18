@@ -26,8 +26,18 @@ public interface CartItemDao {
     @Query("SELECT * FROM cart_item_table")
     LiveData<List<CartItem>> getAllCartItems();
 
-    @Query("SELECT * FROM cart_item_table WHERE cartItemId  =:cartItemId")
-    LiveData<CartItem> getCartItemById(int cartItemId);
+    @Query("SELECT * FROM cart_item_table WHERE customerId  =:customerId")
+    List<CartItem> getCartItemByCustomerId(int customerId);
+
+    @Query("SELECT * FROM cart_item_table WHERE customerId  =:customerId")
+    LiveData<List<CartItem>> getCartItemByCustomerIdLive(int customerId);
+
+
+    @Query("SELECT * FROM cart_item_table WHERE menuItemId  =:menuItemId And customerId=:customerId")
+    CartItem getCartItemByMenuItemId(int menuItemId, int customerId);
+
+    @Query("DELETE FROM cart_item_table WHERE customerId=:customerId")
+    void clearCart(int customerId);
 
 
 }

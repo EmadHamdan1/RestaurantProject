@@ -61,7 +61,7 @@ public class MenuItemCustomerAdapter extends RecyclerView.Adapter<MenuItemCustom
 
         holder.itemView.setOnClickListener(view -> {
 
-            listener.onClickMenuItem(menuItem);
+            listener.onClickMenuItem(menuItem,holder.getAdapterPosition());
 
         });
 

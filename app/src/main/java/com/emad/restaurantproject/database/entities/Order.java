@@ -18,12 +18,23 @@ public class Order {
     private Date date;
     private double totalPrice;
     private String status;
+    private int orderNumber;
     private int customerId;
 
-    public Order(double totalPrice, String status, int customerId) {
+    public Order(double totalPrice, String status, int customerId, Date date, int orderNumber) {
         this.totalPrice = totalPrice;
         this.status = status;
         this.customerId = customerId;
+        this.date = date;
+        this.orderNumber = orderNumber;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     public int getOrderId() {

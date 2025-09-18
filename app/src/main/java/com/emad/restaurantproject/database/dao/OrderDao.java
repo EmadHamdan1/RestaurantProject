@@ -15,7 +15,7 @@ import java.util.List;
 public interface OrderDao {
 
     @Insert
-    void insertOrder(Order order);
+    long insertOrder(Order order);
 
     @Update
     void updateOrder(Order order);
@@ -28,6 +28,15 @@ public interface OrderDao {
 
     @Query("SELECT * FROM order_table WHERE orderId =:orderId")
     LiveData<Order> getOrderById(int orderId);
+
+    @Query("SELECT * FROM order_table WHERE customerId =:customerId")
+    LiveData<Order> getOrderByCustomerId(int customerId);
+
+    @Query("SELECT * FROM order_table WHERE customerId =:customerId")
+    LiveData<List<Order>> getOrdersByCustomerId(int customerId);
+
+    @Query("SELECT MAX(orderNumber) FROM order_table WHERE customerId = :customerId")
+    Integer getLastOrderNumberForUser(int customerId);
 
 
 }

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements ItemHomeListener {
 
-    private static final String ARG_USER_ID = "userId";
+    private static final String ARG_USER_ID = "customerId";
 
     private int userId;
     MyViewModel viewModel;
@@ -65,6 +65,8 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
+        viewModel.loadAllData(userId);
+
         HandleSearchEt();
 
         HandleHorizontalRecyclerView();
@@ -80,7 +82,7 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
         binding.backIv.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), OwnerActivity.class));
         });
-
+        binding.cancelSearchIv.setVisibility(View.INVISIBLE);
         return binding.getRoot();
     }
 
@@ -102,9 +104,11 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
     }
 
     @Override
-    public void onClickMenuItem(MenuItem menuItem) {
+    public void onClickMenuItem(MenuItem menuItem, int itemPos) {
         Intent intent = new Intent(getContext(), DetailsMenuItemActivity.class);
         intent.putExtra("menuItem", menuItem);
+        intent.putExtra("itemPos", itemPos);
+        intent.putExtra("customerId", userId);
         startActivity(intent);
     }
 
@@ -123,7 +127,10 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
     void HandleVerticalRecyclerView() {
         verticalAdapter = new MenuItemCustomerVerticalAdapter(new ArrayList<>(), new ArrayList<>(), this);
         binding.menuItemsVerticalRv.setAdapter(verticalAdapter);
-        binding.menuItemsVerticalRv.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        binding.menuItemsVerticalRv.setLayoutManager(gridLayoutManager);
 
         viewModel.getAllMenuItems().observe(getViewLifecycleOwner(), menuItems -> {
             verticalAdapter.updateMenuItems(menuItems);
@@ -165,6 +172,45 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
                 }
                 binding.searchEtHome.clearFocus();
                 binding.searchEtHome.setCursorVisible(false);
+
+                binding.cancelSearchIv.setVisibility(View.VISIBLE);
+
+                binding.categoryRv.setVisibility(View.GONE);
+                binding.menuItemsRv.setVisibility(View.GONE);
+                binding.exploreTV.setVisibility(View.GONE);
+                binding.titleTv.setVisibility(View.GONE);
+
+                verticalAdapter = new MenuItemCustomerVerticalAdapter(new ArrayList<>(), new ArrayList<>(), this);
+                binding.menuItemsVerticalRv.setAdapter(verticalAdapter);
+
+
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+                binding.menuItemsVerticalRv.setLayoutManager(gridLayoutManager);
+
+                viewModel.getAllMenuItemsByName(binding.searchEtHome.getText().toString()).observe(getViewLifecycleOwner(), menuItems -> {
+                    verticalAdapter.updateMenuItems(menuItems);
+                });
+
+                viewModel.getAllCategories().observe(getViewLifecycleOwner(), categories -> {
+                    verticalAdapter.setCategories(categories);
+                });
+
+                binding.cancelSearchIv.setOnClickListener(view -> {
+
+                    binding.cancelSearchIv.setVisibility(View.INVISIBLE);
+
+                    binding.categoryRv.setVisibility(View.VISIBLE);
+                    binding.menuItemsRv.setVisibility(View.VISIBLE);
+                    binding.exploreTV.setVisibility(View.VISIBLE);
+                    binding.titleTv.setVisibility(View.VISIBLE);
+
+                    binding.searchEtHome.setText("");
+
+                    viewModel.getAllMenuItems().observe(getViewLifecycleOwner(), menuItems -> {
+                        verticalAdapter.updateMenuItems(menuItems);
+                    });
+
+                });
 
                 return true;
             }

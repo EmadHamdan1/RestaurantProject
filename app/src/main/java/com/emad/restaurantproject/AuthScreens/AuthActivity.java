@@ -54,20 +54,20 @@ public class AuthActivity extends AppCompatActivity {
 
             String userType = sharedPref.getString("userType", "");
             String userEmail = sharedPref.getString("userEmail", "");
-            int userId = sharedPref.getInt("userId", -1);
+            int userId = sharedPref.getInt("customerId", -1);
 
             Intent intent;
             if (userType.equalsIgnoreCase("customer")) {
 
                 intent = new Intent(this, HomeActivity.class);
                 intent.putExtra("userEmail", userEmail);
-                intent.putExtra("userId", userId);
+                intent.putExtra("customerId", userId);
 
             } else if (userType.equalsIgnoreCase("owner")) {
 
                 intent = new Intent(this, OwnerActivity.class);
                 intent.putExtra("userEmail", userEmail);
-                intent.putExtra("userId", userId);
+                intent.putExtra("customerId", userId);
             } else {
                 return false;
             }

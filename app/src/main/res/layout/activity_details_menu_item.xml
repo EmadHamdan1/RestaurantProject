@@ -49,7 +49,7 @@
         android:layout_marginTop="8dp"
         android:text="CategoryName"
         android:textColor="#CACACA"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameMenuItemTv" />
@@ -63,12 +63,24 @@
         android:layout_marginTop="25dp"
         android:text="🔥 CategoryName"
         android:textColor="#FF9800"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryNameTv" />
 
+    <ImageView
+        android:id="@+id/iconCategoryIv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/restaurant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -135,11 +147,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/quantityTv"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="04"
+                android:text="0"
                 android:textColor="#808080"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -166,14 +179,15 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/addToCartBt"
         style="@style/ElevatedButtonStyle"
-        android:layout_width="180dp"
+        android:layout_width="170dp"
         android:layout_height="70dp"
+        android:elevation="0dp"
         android:text="Add Cart"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

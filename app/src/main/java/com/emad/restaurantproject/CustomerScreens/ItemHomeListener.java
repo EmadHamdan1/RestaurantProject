@@ -5,5 +5,5 @@ import com.emad.restaurantproject.database.entities.MenuItem;
 public interface ItemHomeListener {
     void onClickCategoryItems(int categoryId);
 
-    void onClickMenuItem(MenuItem menuItem);
+    void onClickMenuItem(MenuItem menuItem, int itemPos);
 }

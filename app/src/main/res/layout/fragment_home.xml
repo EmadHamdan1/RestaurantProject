@@ -7,9 +7,9 @@
     tools:context=".CustomerScreens.HomeFragment">
 
     <ScrollView
-        android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/backIv"
@@ -41,6 +41,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -91,6 +92,18 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <ImageView
+                android:id="@+id/cancelSearchIv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="5dp"
+                android:elevation="5dp"
+                android:padding="7dp"
+                android:src="@drawable/outline_cancel_24"
+                app:layout_constraintBottom_toBottomOf="@+id/searchTl"
+                app:layout_constraintEnd_toEndOf="@+id/searchTl"
+                app:layout_constraintTop_toTopOf="@+id/searchTl" />
+
             <TextView
                 android:id="@+id/exploreTV"
                 android:layout_width="wrap_content"
@@ -123,10 +136,10 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/exploreTV"
-                app:layout_constraintTop_toBottomOf="@+id/titleRv" />
+                app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
             <TextView
-                android:id="@+id/titleRv"
+                android:id="@+id/titleTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -138,15 +151,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/menuItemsRv" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.emad.restaurantproject.CustomerScreens.NonScrollRecyclerView
                 android:id="@+id/menuItemsVerticalRv"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:nestedScrollingEnabled="false"
-                android:orientation="horizontal"
                 android:minHeight="500dp"
+                android:nestedScrollingEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/categoryRv" />

@@ -11,9 +11,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.emad.restaurantproject.CustomerScreens.HomeActivity;
 import com.emad.restaurantproject.R;
+import com.emad.restaurantproject.database.data.MyRepository;
 import com.emad.restaurantproject.database.data.MyViewModel;
+import com.emad.restaurantproject.database.entities.Category;
+import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.databinding.ActivityScreenSplashBinding;
+
+import java.util.List;
 
 public class ScreenSplash extends AppCompatActivity {
 
@@ -34,10 +40,16 @@ public class ScreenSplash extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
 
-        new Handler().postDelayed(() -> {
-            startActivity(new Intent(getBaseContext(), WelcomeActivity.class));
-            finish();
-        }, 2000);
+        viewModel.getAllCategories().observe(this, categories -> {
+            viewModel.getAllMenuItems().observe(this, menuItems -> {
+                new Handler().postDelayed(() -> {
+                    startActivity(new Intent(getBaseContext(), WelcomeActivity.class));
+                    finish();
+                }, 1000);
+            });
+        });
+
+
 
     }
 }

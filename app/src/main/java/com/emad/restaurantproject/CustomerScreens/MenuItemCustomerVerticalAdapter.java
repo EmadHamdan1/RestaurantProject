@@ -70,12 +70,17 @@ public class MenuItemCustomerVerticalAdapter extends RecyclerView.Adapter<MenuIt
                 .into(holder.imageItemCustomerIv);
 
 
-        holder.categoryMenuItemIv.setImageResource(categories.get(menuItem.getCategoryId() - 1).getImageId());
+        for (Category category : categories) {
+            if (category.getCategoryId() == menuItem.getCategoryId()) {
+                holder.categoryMenuItemIv.setImageResource(category.getImageId());
+                break;
+            }
+        }
 
 
         holder.itemView.setOnClickListener(view -> {
 
-            listener.onClickMenuItem(menuItem);
+            listener.onClickMenuItem(menuItem, holder.getAdapterPosition());
 
         });
 

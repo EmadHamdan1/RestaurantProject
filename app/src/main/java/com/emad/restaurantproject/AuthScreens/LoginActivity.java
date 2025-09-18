@@ -93,10 +93,10 @@ public class LoginActivity extends AppCompatActivity {
     void CheckUserType(User userByEmail) {
         if (userByEmail.getUserType().equalsIgnoreCase("customer")) {
             Intent intent = new Intent(getBaseContext(), HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.putExtra("userId", userByEmail.getUserId());
+            intent.putExtra("customerId", userByEmail.getUserId());
             startActivity(intent);
-
             finish();
+
         } else if (userByEmail.getUserType().equalsIgnoreCase("owner")) {
             startActivity(new Intent(getBaseContext(), OwnerActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             finish();
@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
         editor = sharedPref.edit();
         editor.putBoolean("isLoggedIn", true);
         editor.putString("userEmail", user.getEmail());
-        editor.putInt("userId", user.getUserId());
+        editor.putInt("customerId", user.getUserId());
         editor.putString("userType", user.getUserType());
         editor.apply();
     }
