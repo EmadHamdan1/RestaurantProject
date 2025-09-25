@@ -60,6 +60,7 @@
             android:exported="false" />
         <activity
             android:name=".WelcomeScreens.ScreenSplash"
+            android:theme="@style/Theme.MyApp.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

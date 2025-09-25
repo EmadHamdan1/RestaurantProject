@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".AuthScreens.AuthActivity">
 
-
     <ImageView
         android:id="@+id/helloIv"
         android:layout_width="wrap_content"
@@ -24,7 +23,7 @@
         android:lineHeight="55dp"
         android:text="@string/discover_your_dream_job_here_auth_screen"
         android:textAlignment="center"
-        android:textColor="#FF9800"
+        android:textColor="@color/colorPrimary"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +38,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/discover_your_dream_job_here_discover_your_dream_job_herediscover_auth_screen"
         android:textAlignment="center"
-        android:textColor="#4D4D4D"
+        android:textColor="@color/colorTv"
         android:textSize="14sp"
         android:lineHeight="25dp"
         app:layout_constraintEnd_toEndOf="parent"

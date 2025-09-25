@@ -1,7 +1,24 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.RestaurantProject" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-    </style>
+<resources>
+    <color name="colorPrimary">#FFB74D</color>
+    <color name="colorWhite">#1D1D1D</color>
+    <color name="colorBlack">#FFFFFF</color>
+    <color name="colorSurface">#1E1E1E</color>
+    <color name="colorOnSurface">#FFFFFF</color>
+    <color name="colorHint">#B0B0B0</color>
+
+    <color name="colorBackEt">#2A2A2A</color>
+    <color name="colorBtReg">#333333</color>
+    <color name="colorTv">#E0E0E0</color>
+    <color name="colorDis">#757575</color>
+
+    <color name="colorFbt">#3E2723</color>
+
+    <color name="colorRed">#FF5252</color>
+
+    <color name="colorBackCircle">#4E342E</color>
+    <color name="colorBackCategory">#2C2C2C</color>
+
+    <color name="colorPrice">#FFD180</color>
+
+    <color name="colorBackground">#1E1E1E</color>
 </resources>

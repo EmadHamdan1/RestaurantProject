@@ -8,6 +8,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -66,8 +67,15 @@ public class ProfileOwnerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        boolean nightMode = loadNightMode();
+        if (nightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         FragmentOwnerProfileBinding binding = FragmentOwnerProfileBinding.inflate(inflater, container, false);
+        binding.nightMoodSwitch.setChecked(nightMode);
 
         MyViewModel viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -93,6 +101,19 @@ public class ProfileOwnerFragment extends Fragment {
             launcher.launch(new Intent(getActivity(), ChooseLanguageActivity.class));
         });
 
+        binding.nightMoodSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                saveNightMode(true);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                saveNightMode(false);
+            }
+
+            requireActivity().recreate();
+        });
+
+
         binding.logoutCl.setOnClickListener(view -> {
 
             BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
@@ -114,5 +135,20 @@ public class ProfileOwnerFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+    private void saveNightMode(boolean isNightMode) {
+        requireActivity()
+                .getSharedPreferences("settings", AppCompatActivity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("night_mode", isNightMode)
+                .apply();
+    }
+
+    private boolean loadNightMode() {
+        return requireActivity()
+                .getSharedPreferences("settings", AppCompatActivity.MODE_PRIVATE)
+                .getBoolean("night_mode", false);
+    }
+
 
 }

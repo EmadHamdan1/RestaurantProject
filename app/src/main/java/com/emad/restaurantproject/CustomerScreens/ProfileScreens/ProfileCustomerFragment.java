@@ -8,6 +8,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -24,11 +25,7 @@ import com.emad.restaurantproject.database.data.MyViewModel;
 import com.emad.restaurantproject.databinding.FragmentCustomerProfileBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileCustomerFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileCustomerFragment extends Fragment {
 
     ActivityResultLauncher<Intent> launcher = registerForActivityResult(
@@ -43,8 +40,6 @@ public class ProfileCustomerFragment extends Fragment {
             }
     );
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_USER_ID = "customerId";
 
     private int userId;
@@ -75,7 +70,16 @@ public class ProfileCustomerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        boolean nightMode = loadNightMode();
+        if (nightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         FragmentCustomerProfileBinding binding = FragmentCustomerProfileBinding.inflate(inflater, container, false);
+        binding.nightMoodSwitch.setChecked(nightMode);
+
         MyViewModel viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         viewModel.getUserById(userId).observe(getViewLifecycleOwner(), user -> {
@@ -104,6 +108,18 @@ public class ProfileCustomerFragment extends Fragment {
             launcher.launch(new Intent(getActivity(), ChooseLanguageActivity.class));
         });
 
+        binding.nightMoodSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                saveNightMode(true);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                saveNightMode(false);
+            }
+
+            requireActivity().recreate();
+        });
+
         binding.logoutCl.setOnClickListener(view -> {
 
             BottomSheetDialog dialog = new BottomSheetDialog(view.getContext());
@@ -126,4 +142,19 @@ public class ProfileCustomerFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+    private void saveNightMode(boolean isNightMode) {
+        requireActivity()
+                .getSharedPreferences("settings", AppCompatActivity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("night_mode", isNightMode)
+                .apply();
+    }
+
+    private boolean loadNightMode() {
+        return requireActivity()
+                .getSharedPreferences("settings", AppCompatActivity.MODE_PRIVATE)
+                .getBoolean("night_mode", false);
+    }
+
 }

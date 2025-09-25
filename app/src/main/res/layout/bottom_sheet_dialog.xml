@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_or_delete_tv_bottom_dialog"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:layout_marginTop="5dp"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -34,7 +34,7 @@
         android:layout_width="320dp"
         android:layout_height="1dp"
         android:layout_marginTop="25dp"
-        android:background="#CACACA"
+        android:background="@color/colorDis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editOrDeleteTv" />
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/edit_tv_bottom_dialog"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
     <View
         android:layout_width="250dp"
         android:layout_height="1dp"
-        android:background="#CACACA"
+        android:background="@color/colorDis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_Item" />
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/delete_tv_bottom_dialog"
-            android:textColor="#DE0000"
+            android:textColor="@color/colorRed"
             android:textSize="22sp"
             android:textStyle="bold" />
 

@@ -17,7 +17,6 @@ public class ChooseLanguageActivity extends AppCompatActivity {
 
     ActivityChooseLanguageBinding binding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

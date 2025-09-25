@@ -26,7 +26,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="@string/sign_up_tv_register"
-        android:textColor="#FF9800"
+        android:textColor="@color/colorPrimary"
         android:textSize="50sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/arrowBackIv" />
@@ -40,7 +40,7 @@
         android:lineHeight="30dp"
         android:text="@string/create_account_tv_register"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,12 +52,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="40dp"
-        android:background="#FFF5EA"
+        android:background="@color/colorBackEt"
         android:hint="@string/name_hint_register"
-        android:textColorHint="#525252"
-        app:boxStrokeColor="#FF9800"
+        android:textColorHint="@color/colorHint"
+        app:boxStrokeColor="@color/colorPrimary"
         app:boxStrokeWidth="0dp"
-        app:hintTextColor="#FF9800"
+        app:hintTextColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcomeTvSignUp">
@@ -76,12 +76,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="30dp"
-        android:background="#FFF5EA"
+        android:background="@color/colorBackEt"
         android:hint="@string/email_hint_register"
-        android:textColorHint="#525252"
-        app:boxStrokeColor="#FF9800"
+        android:textColorHint="@color/colorHint"
+        app:boxStrokeColor="@color/colorPrimary"
         app:boxStrokeWidth="0dp"
-        app:hintTextColor="#FF9800"
+        app:hintTextColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nameEtlSignUp">
@@ -101,12 +101,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="30dp"
-        android:background="#FFF5EA"
+        android:background="@color/colorBackEt"
         android:hint="@string/password_hint__register"
-        android:textColorHint="#525252"
-        app:boxStrokeColor="#FF9800"
+        android:textColorHint="@color/colorHint"
+        app:boxStrokeColor="@color/colorPrimary"
         app:boxStrokeWidth="0dp"
-        app:hintTextColor="#FF9800"
+        app:hintTextColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailEtlSignUp">
@@ -147,7 +147,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@string/already_have_an_account_tv_register"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textStyle="bold" />
 
         <TextView
@@ -155,7 +155,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="@string/sign_in_tv_register"
-            android:textColor="#FF9800"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
     </LinearLayout>
 

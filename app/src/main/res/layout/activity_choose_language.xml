@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/english_us_tv_owner"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:layoutDirection="ltr"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -54,9 +54,9 @@
             android:layoutDirection="ltr"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:buttonTint="#FF9800"
+            android:buttonTint="@color/colorPrimary"
             android:text="@string/arabic_tv_owner"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:textStyle="bold" />
 
