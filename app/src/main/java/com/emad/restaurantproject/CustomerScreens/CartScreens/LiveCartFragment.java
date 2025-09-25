@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.CartScreens;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,17 +26,14 @@ import com.emad.restaurantproject.database.entities.Order;
 import com.emad.restaurantproject.database.entities.OrderItem;
 import com.emad.restaurantproject.databinding.FragmentLiveCartBinding;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.Executors;
 
 import android.graphics.Canvas;
 
-public class LiveCartFragment extends Fragment {
+public class LiveCartFragment extends Fragment implements CartAdapter.CartQuantityListener {
 
 
     private static final String ARG_USER_ID = "customerId";
@@ -72,7 +69,7 @@ public class LiveCartFragment extends Fragment {
         FragmentLiveCartBinding binding = FragmentLiveCartBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
 
-        adapter = new CartAdapter(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        adapter = new CartAdapter(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), this);
         binding.cartItemRv.setAdapter(adapter);
         binding.cartItemRv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
@@ -196,4 +193,21 @@ public class LiveCartFragment extends Fragment {
 
     }
 
+    @Override
+    public void plusQuantity(CartItem cartItem) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            cartItem.setQuantity(cartItem.getQuantity() + 1);
+            viewModel.updateCartItem(cartItem);
+        });
+    }
+
+    @Override
+    public void minusQuantity(CartItem cartItem) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            if (cartItem.getQuantity() > 1) {
+                cartItem.setQuantity(cartItem.getQuantity() - 1);
+                viewModel.updateCartItem(cartItem);
+            }
+        });
+    }
 }

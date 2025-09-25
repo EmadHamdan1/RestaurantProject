@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_gravity="center"
@@ -28,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Pizza Marg"
+                android:text="@string/pizza_marg_tv_item_cart"
                 android:textColor="#1D1D1D"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -53,26 +52,51 @@
                 style="@style/shadowText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:shadowColor="#FF9800"
-                android:text="🔥 88 Calories"
+                android:text="@string/calories_tv_item_cart"
                 android:textColor="#FF9800"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@+id/nameItemTv"
                 app:layout_constraintTop_toBottomOf="@+id/nameItemTv" />
+
+            <ImageView
+                android:id="@+id/minusQuantityIv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layoutDirection="ltr"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/minus_quantity"
+                app:layout_constraintBottom_toBottomOf="@id/quantityItemTv"
+                app:layout_constraintEnd_toStartOf="@id/quantityItemTv"
+                app:layout_constraintTop_toTopOf="@id/quantityItemTv" />
+
+            <ImageView
+                android:id="@+id/addQuantityIv"
+                android:layout_width="22dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="5dp"
+                android:layoutDirection="ltr"
+                android:src="@drawable/plus_quantity"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintBottom_toBottomOf="@id/quantityItemTv"
+                app:layout_constraintStart_toEndOf="@id/quantityItemTv"
+                app:layout_constraintTop_toTopOf="@+id/minusQuantityIv" />
 
             <TextView
                 android:id="@+id/quantityItemTv"
                 style="@style/shadowText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
                 android:layout_marginBottom="7dp"
+                android:paddingHorizontal="5dp"
                 android:shadowColor="#000000"
-                android:text="3 item"
+                android:text="@string/quantity_item_cart"
                 android:textColor="#000000"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/totalPriceItemTv"
-                app:layout_constraintStart_toStartOf="@+id/nameItemTv"
+                app:layout_constraintStart_toEndOf="@+id/imageItemIv"
                 app:layout_constraintTop_toTopOf="@+id/totalPriceItemTv" />
 
             <TextView
@@ -82,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:shadowRadius="3"
-                android:text="$"
+                android:text="@string/dollar_item_cart"
                 android:textColor="#FF9800"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -98,7 +122,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:shadowRadius="3"
-                android:text="10.00"
+                android:text="@string/price_item_cart"
                 android:textColor="#181818"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -118,6 +142,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

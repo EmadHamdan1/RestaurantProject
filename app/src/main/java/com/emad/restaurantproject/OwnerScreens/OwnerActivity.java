@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,6 +18,10 @@ import com.emad.restaurantproject.databinding.ActivityOwnerBinding;
 public class OwnerActivity extends AppCompatActivity {
 
     ActivityOwnerBinding binding;
+    MenuItemFragment menuFragment;
+    ProfileOwnerFragment profileFragment;
+
+    private static final String keySelectedItem = "selected_item";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,43 +35,49 @@ public class OwnerActivity extends AppCompatActivity {
             return insets;
         });
 
-        binding.iconBack.setOnClickListener(view -> {
-            startActivity(new Intent(this, LoginActivity.class));
-        });
-
         binding.floatingActionButton.setOnClickListener(view -> {
             startActivity(new Intent(getBaseContext(), AddMenuItemActivity.class));
         });
 
-        HandleBottomNavigationWithFragment();
 
-    }
+        if (savedInstanceState == null) {
+            menuFragment = new MenuItemFragment();
+            profileFragment = ProfileOwnerFragment.newInstance(getIntent().getIntExtra("ownerId", -1));
 
-    void HandleBottomNavigationWithFragment() {
+            getSupportFragmentManager().beginTransaction()
+                    .add(binding.ownerContainerFragmentsFl.getId(), menuFragment, "menu")
+                    .commitNow();
 
-        MenuItemFragment menuFragment = new MenuItemFragment();
-        ProfileFragment profileFragment = new ProfileFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(binding.ownerContainerFragmentsFl.getId(), profileFragment, "profile")
+                    .hide(profileFragment)
+                    .commitNow();
+        } else {
+            menuFragment = (MenuItemFragment) getSupportFragmentManager().findFragmentByTag("menu");
+            profileFragment = (ProfileOwnerFragment) getSupportFragmentManager().findFragmentByTag("profile");
+        }
 
-        getSupportFragmentManager().beginTransaction()
-                .add(binding.ownerContainerFragmentsFl.getId(), menuFragment, "menu").commitNow();
-
-        getSupportFragmentManager().beginTransaction()
-                .add(binding.ownerContainerFragmentsFl.getId(), profileFragment, "profile")
-                .hide(profileFragment).commitNow();
+        int selectedItem = R.id.menuItem;
+        if (savedInstanceState != null) {
+            selectedItem = savedInstanceState.getInt(keySelectedItem, R.id.menuItem);
+        }
 
         binding.ownerBottomNavigation.setOnItemSelectedListener(item -> {
-
             if (item.getItemId() == R.id.menuItem) {
-                getSupportFragmentManager().beginTransaction().hide(profileFragment)
-                        .show(menuFragment).commit();
-
+                getSupportFragmentManager().beginTransaction().hide(profileFragment).show(menuFragment).commit();
             } else if (item.getItemId() == R.id.profileItem) {
-                getSupportFragmentManager().beginTransaction().hide(menuFragment)
-                        .show(profileFragment).commit();
+                getSupportFragmentManager().beginTransaction().hide(menuFragment).show(profileFragment).commit();
             }
             return true;
         });
 
+        binding.ownerBottomNavigation.setSelectedItemId(selectedItem);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(keySelectedItem, binding.ownerBottomNavigation.getSelectedItemId());
     }
 
 }

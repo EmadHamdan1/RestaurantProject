@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerScreens.DetailsMenuItemActivity">
+    tools:context=".CustomerScreens.HomeScreens.DetailsMenuItemActivity">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -22,9 +22,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/arrowBackIv"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_margin="20dp"
+        android:layoutDirection="ltr"
         android:src="@drawable/ic_left_arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Name"
+        android:text="@string/name_item_details_screen"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageItemIv" />
@@ -47,9 +49,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:text="CategoryName"
+        android:text="@string/categoryname_item_details_screen"
         android:textColor="#CACACA"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameMenuItemTv" />
@@ -60,10 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
-        android:text="🔥 CategoryName"
+        android:layout_marginTop="30dp"
+        android:text="@string/calories_item_details_screen"
         android:textColor="#FF9800"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryNameTv" />
@@ -96,25 +98,38 @@
             android:background="#FF9800"
             android:paddingHorizontal="10dp"
             android:paddingVertical="15dp"
-            android:text="$ 20.00"
+            android:text="@string/price_item_details_screen"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/detailsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/details_item_details_screen"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caloriesItemTv" />
 
     <TextView
         android:id="@+id/descriptionTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="25dp"
-        android:text="Description"
+        android:layout_marginTop="20dp"
+        android:text="@string/description_item_details_screen"
         android:textColor="#878787"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/caloriesItemTv" />
+        app:layout_constraintTop_toBottomOf="@+id/detailsTv" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -152,7 +167,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0"
+                android:text="@string/quantity_item_details_screen"
                 android:textColor="#808080"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -184,7 +199,7 @@
         android:layout_width="170dp"
         android:layout_height="70dp"
         android:elevation="0dp"
-        android:text="Add Cart"
+        android:text="@string/add_cart_item_details_screen"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView"

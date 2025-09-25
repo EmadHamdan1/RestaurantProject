@@ -7,14 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".OwnerScreens.OwnerActivity">
 
-    <ImageView
-        android:id="@+id/icon_back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <FrameLayout
         android:id="@+id/ownerContainerFragmentsFl"
         android:layout_width="0dp"

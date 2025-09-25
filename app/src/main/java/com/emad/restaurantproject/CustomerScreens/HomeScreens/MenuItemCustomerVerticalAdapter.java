@@ -1,6 +1,7 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.HomeScreens;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -10,12 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.emad.restaurantproject.OwnerScreens.MenuItemListener;
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.entities.Category;
 import com.emad.restaurantproject.database.entities.MenuItem;
 
-import com.emad.restaurantproject.databinding.ItemMenuItemOwnerBinding;
 import com.emad.restaurantproject.databinding.ItemMenuItemVerticalCustomerBinding;
 
 import java.util.List;
@@ -60,7 +59,7 @@ public class MenuItemCustomerVerticalAdapter extends RecyclerView.Adapter<MenuIt
         MenuItem menuItem = menuItems.get(position);
 
         holder.nameItemTv.setText(menuItem.getName());
-        holder.caloriesItemTv.setText("🔥 " + menuItem.getCalories() + " Calories");
+        holder.caloriesItemTv.setText("🔥 " + menuItem.getCalories() + holder.context.getString(R.string.calories_item_customer));
         holder.priceItemTv.setText("$ " + menuItem.getPrice());
 
         Glide.with(holder.imageItemCustomerIv.getContext())
@@ -95,6 +94,7 @@ public class MenuItemCustomerVerticalAdapter extends RecyclerView.Adapter<MenuIt
 
         TextView nameItemTv, caloriesItemTv, priceItemTv;
         ImageView imageItemCustomerIv, categoryMenuItemIv;
+        Context context;
 
         public MenuItemCustomerViewHolder(ItemMenuItemVerticalCustomerBinding binding) {
             super(binding.getRoot());
@@ -104,6 +104,7 @@ public class MenuItemCustomerVerticalAdapter extends RecyclerView.Adapter<MenuIt
             priceItemTv = binding.priceItemTv;
             imageItemCustomerIv = binding.imageItemIv;
             categoryMenuItemIv = binding.categoryMenuItemIv;
+            context = binding.getRoot().getContext();
 
         }
     }

@@ -3,15 +3,21 @@ package com.emad.restaurantproject.database.data;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import com.emad.restaurantproject.database.dao.CartItemDao;
 import com.emad.restaurantproject.database.dao.CategoryDao;
+import com.emad.restaurantproject.database.dao.FavoriteDao;
 import com.emad.restaurantproject.database.dao.MenuItemDao;
 import com.emad.restaurantproject.database.dao.OrderDao;
 import com.emad.restaurantproject.database.dao.OrderItemDao;
 import com.emad.restaurantproject.database.dao.UserDao;
 import com.emad.restaurantproject.database.entities.CartItem;
 import com.emad.restaurantproject.database.entities.Category;
+import com.emad.restaurantproject.database.entities.Favorite;
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.database.entities.Order;
 import com.emad.restaurantproject.database.entities.OrderItem;
@@ -27,6 +33,7 @@ public class MyRepository {
     private final OrderDao orderDao;
     private final OrderItemDao orderItemDao;
     private final CartItemDao cartItemDao;
+    private final FavoriteDao favoriteDao;
 
     public MyRepository(Application application) {
         RestaurantDatabase db = RestaurantDatabase.getDatabase(application);
@@ -36,6 +43,7 @@ public class MyRepository {
         orderDao = db.orderDao();
         orderItemDao = db.orderItemDao();
         cartItemDao = db.cartItemDao();
+        favoriteDao = db.favoriteDao();
     }
 
     // User Method
@@ -177,7 +185,7 @@ public class MyRepository {
         return orderDao.getOrdersByCustomerId(customerId);
     }
 
-    public Integer getLastOrderNumberForUser(int customerId){
+    public Integer getLastOrderNumberForUser(int customerId) {
         return orderDao.getLastOrderNumberForUser(customerId);
     }
 
@@ -250,5 +258,53 @@ public class MyRepository {
             cartItemDao.clearCart(customerId);
         });
     }
+
+
+    // Favorite Method
+
+
+    public void insertFavoriteItem(Favorite favorite) {
+        RestaurantDatabase.databaseWriteExecutor.execute(() -> {
+            favoriteDao.insertFavoriteItem(favorite);
+        });
+    }
+
+
+    public void updateFavoriteItem(Favorite favorite) {
+        RestaurantDatabase.databaseWriteExecutor.execute(() -> {
+            favoriteDao.updateFavoriteItem(favorite);
+        });
+    }
+
+
+    public void deleteFavoriteItem(Favorite favorite) {
+        RestaurantDatabase.databaseWriteExecutor.execute(() -> {
+            favoriteDao.deleteFavoriteItem(favorite);
+        });
+    }
+
+    public LiveData<List<Favorite>> getAllFavoriteItem() {
+        return favoriteDao.getAllFavoriteItem();
+    }
+
+    public LiveData<List<Favorite>> getFavoriteItemsByUserId(int customerId) {
+        return favoriteDao.getFavoriteItemsByUserId(customerId);
+    }
+
+    public LiveData<List<MenuItem>> getFavoriteMenuItemsByUserId(int customerId) {
+        return favoriteDao.getFavoriteMenuItemsByUserId(customerId);
+    }
+
+    public Favorite getFavoriteItemByUserIdAndItemId(int customerId, int menuItemId) {
+        return favoriteDao.getFavoriteItemByUserIdAndItemId(customerId, menuItemId);
+    }
+
+    public LiveData<Favorite> getFavoriteItemByUserIdAndItemIdLive(int customerId, int menuItemId) {
+        return favoriteDao.getFavoriteItemByUserIdAndItemIdLive(customerId, menuItemId);
+    }
+
+//    public void clearFavorite(int customerId) {
+//        favoriteDao.clearFavorite(customerId);
+//    }
 
 }

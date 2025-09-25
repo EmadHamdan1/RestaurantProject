@@ -20,7 +20,7 @@
         android:id="@+id/editOrDeleteTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Or Delete"
+        android:text="@string/edit_or_delete_tv_bottom_dialog"
         android:textColor="@color/black"
         android:layout_marginTop="5dp"
         android:textSize="25sp"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Edit"
+            android:text="@string/edit_tv_bottom_dialog"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete"
+            android:text="@string/delete_tv_bottom_dialog"
             android:textColor="#DE0000"
             android:textSize="22sp"
             android:textStyle="bold" />

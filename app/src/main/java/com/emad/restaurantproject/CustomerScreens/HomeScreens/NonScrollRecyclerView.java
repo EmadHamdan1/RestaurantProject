@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.HomeScreens;
 
 import android.content.Context;
 import android.util.AttributeSet;

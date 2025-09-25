@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".CustomerScreens.HomeActivity">
+    tools:context=".CustomerScreens.HomeScreens.HomeActivity">
 
     <FrameLayout
         android:id="@+id/customerContainerFragmentFl"

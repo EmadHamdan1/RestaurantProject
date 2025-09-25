@@ -1,30 +1,23 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.CartScreens;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
-import com.emad.restaurantproject.database.entities.CartItem;
-import com.emad.restaurantproject.database.entities.Order;
-import com.emad.restaurantproject.database.entities.OrderItem;
 import com.emad.restaurantproject.databinding.FragmentCartBinding;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.concurrent.Executors;
+
 
 
 public class CartFragment extends Fragment {
@@ -65,8 +58,8 @@ public class CartFragment extends Fragment {
         viewModel.loadAllData(userId);
 
         ArrayList<String> categories = new ArrayList<>();
-        categories.add("Live Order");
-        categories.add("Completed Order");
+        categories.add(getString(R.string.live_order));
+        categories.add(getString(R.string.completed_order));
 
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(LiveCartFragment.newInstance(userId));

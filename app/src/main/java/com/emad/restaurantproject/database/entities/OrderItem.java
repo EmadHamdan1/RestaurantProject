@@ -10,7 +10,7 @@ import com.emad.restaurantproject.utils.Converters;
 @Entity(tableName = "order_items_table",
         foreignKeys = {
                 @ForeignKey(entity = Order.class, parentColumns = {"orderId"}, childColumns = {"orderId"}),
-                @ForeignKey(entity = MenuItem.class, parentColumns = {"menuItemId"}, childColumns = {"menuItemId"})})
+                @ForeignKey(entity = MenuItem.class, parentColumns = {"menuItemId"}, childColumns = {"menuItemId"},onDelete = ForeignKey.CASCADE)})
 
 @TypeConverters(Converters.class)
 public class OrderItem {

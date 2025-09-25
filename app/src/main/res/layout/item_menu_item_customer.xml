@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
-                android:text="Pizza Marg"
+                android:text="@string/name_tv_item_customer_h"
                 android:textColor="#1D1D1D"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -52,7 +52,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:shadowColor="#FF9800"
-                android:text="🔥 88 Calories"
+                android:text="@string/calories_tv_item_customer_h"
                 android:textColor="#FF9800"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageItemCustomerIv" />
@@ -65,7 +65,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:shadowRadius="3"
-                android:text="$ 10.00"
+                android:text="@string/price_tv_item_customer_h"
                 android:textColor="#181818"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -73,11 +73,12 @@
                 app:layout_constraintTop_toBottomOf="@id/caloriesItemTv" />
 
             <ImageView
+                android:id="@+id/favoriteIv"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/favorite2"
+                android:src="@drawable/heart_outline"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

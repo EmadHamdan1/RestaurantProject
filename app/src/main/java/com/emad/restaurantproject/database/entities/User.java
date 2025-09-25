@@ -31,6 +31,15 @@ public class User {
     }
 
     @Ignore
+    public User(int userId, String name, String email, String password, String photoUri) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.userId = userId;
+        this.photoUri = photoUri;
+    }
+
+    @Ignore
     public User(String name, String email, String password, String userType) {
         this.name = name;
         this.email = email;

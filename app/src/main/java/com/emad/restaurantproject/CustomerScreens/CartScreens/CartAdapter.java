@@ -1,6 +1,7 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.CartScreens;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -23,11 +24,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MenuItemCartVi
     List<CartItem> cartItems;
     List<MenuItem> menuItems;
     List<Category> categories;
+    CartQuantityListener listener;
 
-    public CartAdapter(List<CartItem> cartItems, List<MenuItem> menuItems, List<Category> categories) {
+    public CartAdapter(List<CartItem> cartItems, List<MenuItem> menuItems, List<Category> categories, CartQuantityListener listener) {
         this.cartItems = cartItems;
         this.menuItems = menuItems;
         this.categories = categories;
+        this.listener = listener;
     }
 
     public void updateMenuItems(List<MenuItem> newMenuItems) {
@@ -81,9 +84,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MenuItemCartVi
         if (menuItem != null) {
 
             holder.nameItemTv.setText(menuItem.getName());
-            holder.caloriesItemTv.setText("🔥 " + menuItem.getCalories() + " Calories");
+            holder.caloriesItemTv.setText("🔥 " + menuItem.getCalories() + holder.context.getString(R.string.calories_item_customer));
             holder.totalPriceItemTv.setText(String.valueOf(cartItem.getTotalPrice()));
-            holder.quantityItemTv.setText(cartItem.getQuantity() + " Item");
+            holder.quantityItemTv.setText(String.valueOf(cartItem.getQuantity()));
 
             Glide.with(holder.imageItemIv.getContext())
                     .load(menuItem.getImageUri())
@@ -102,6 +105,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MenuItemCartVi
             }
         }
 
+        holder.addQuantityIv.setOnClickListener(view -> {
+            listener.plusQuantity(cartItem);
+        });
+
+
+        holder.minusQuantityIv.setOnClickListener(view -> {
+            listener.minusQuantity(cartItem);
+        });
     }
 
     @Override
@@ -112,8 +123,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MenuItemCartVi
     public static class MenuItemCartViewHolder extends RecyclerView.ViewHolder {
 
         TextView nameItemTv, caloriesItemTv, totalPriceItemTv, quantityItemTv;
-        ImageView imageItemIv, categoryMenuItemIv;
-
+        ImageView imageItemIv, categoryMenuItemIv, addQuantityIv, minusQuantityIv;
+        Context context;
         public MenuItemCartViewHolder(ItemCartCustomerBinding binding) {
             super(binding.getRoot());
 
@@ -124,6 +135,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MenuItemCartVi
             imageItemIv = binding.imageItemIv;
             categoryMenuItemIv = binding.categoryMenuItemIv;
 
+            addQuantityIv = binding.addQuantityIv;
+            minusQuantityIv = binding.minusQuantityIv;
+            context = binding.getRoot().getContext();
+
         }
     }
+
+    interface CartQuantityListener {
+        void plusQuantity(CartItem cartItem);
+
+        void minusQuantity(CartItem cartItem);
+    }
+
 }

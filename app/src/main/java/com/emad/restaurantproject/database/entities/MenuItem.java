@@ -24,7 +24,6 @@ public class MenuItem implements Serializable {
     private double price;
     private String imageUri;
     private String description;
-
     private int categoryId;
 
     @Ignore

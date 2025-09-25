@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 
 import com.emad.restaurantproject.database.entities.CartItem;
 import com.emad.restaurantproject.database.entities.Category;
+import com.emad.restaurantproject.database.entities.Favorite;
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.database.entities.Order;
 import com.emad.restaurantproject.database.entities.OrderItem;
@@ -212,5 +213,44 @@ public class MyViewModel extends AndroidViewModel {
     public void clearCart(int customerId) {
         repository.clearCart(customerId);
     }
+
+
+    // Favorite Method
+
+    public void insertFavoriteItem(Favorite favorite) {
+        repository.insertFavoriteItem(favorite);
+    }
+
+    public void updateFavoriteItem(Favorite favorite) {
+        repository.updateFavoriteItem(favorite);
+    }
+
+    public void deleteFavoriteItem(Favorite favorite) {
+        repository.deleteFavoriteItem(favorite);
+    }
+
+    public LiveData<List<Favorite>> getAllFavoriteItem() {
+        return repository.getAllFavoriteItem();
+    }
+
+    public LiveData<List<Favorite>> getFavoriteItemsByUserId(int customerId) {
+        return repository.getFavoriteItemsByUserId(customerId);
+    }
+
+    public LiveData<List<MenuItem>> getFavoriteMenuItemsByUserId(int customerId) {
+        return repository.getFavoriteMenuItemsByUserId(customerId);
+    }
+
+    public Favorite getFavoriteItemByUserIdAndItemId(int customerId, int menuItemId) {
+        return repository.getFavoriteItemByUserIdAndItemId(customerId, menuItemId);
+    }
+
+    public LiveData<Favorite> getFavoriteItemByUserIdAndItemIdLive(int customerId, int menuItemId){
+        return repository.getFavoriteItemByUserIdAndItemIdLive(customerId, menuItemId);
+    }
+
+//    public void clearFavorite(int customerId) {
+//        repository.clearFavorite(customerId);
+//    }
 
 }

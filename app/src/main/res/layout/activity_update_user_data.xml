@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerScreens.ProfileScreens.UpdateUserDataActivity">
+
+    <ImageView
+        android:id="@+id/arrowBackIv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="20dp"
+        android:layoutDirection="ltr"
+        android:src="@drawable/ic_left_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_data_tv_owner"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/arrowBackIv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/arrowBackIv" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/userIv"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:elevation="9dp"
+        android:padding="5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/man"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/addPhotoIv"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_margin="8dp"
+        android:elevation="10dp"
+        android:src="@drawable/gallery"
+        app:layout_constraintBottom_toBottomOf="@+id/userIv"
+        app:layout_constraintEnd_toEndOf="@+id/userIv" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameEtl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:background="#FFF5EA"
+        android:hint="@string/new_name_tv_owner"
+        android:textColorHint="#525252"
+        app:boxStrokeColor="#FF9800"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="#FF9800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userIv">
+
+        <EditText
+            android:id="@+id/nameEtUpdateUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailEtl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFF5EA"
+        android:hint="@string/new_email_tv_owner"
+        android:textColorHint="#525252"
+        app:boxStrokeColor="#FF9800"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="#FF9800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameEtl">
+
+        <EditText
+            android:id="@+id/emailEtUpdateUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordEtl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFF5EA"
+        android:hint="@string/new_password_tv_owner"
+        android:textColorHint="#525252"
+        app:boxStrokeColor="#FF9800"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="#FF9800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailEtl">
+
+        <EditText
+            android:id="@+id/passwordEtAddUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/updateUserBt"
+        style="@style/ElevatedButtonStyle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:padding="15dp"
+        android:text="@string/update_bt_owner"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEtl" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

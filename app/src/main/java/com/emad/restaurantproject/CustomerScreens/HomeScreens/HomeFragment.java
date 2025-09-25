@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.HomeScreens;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,10 +21,12 @@ import com.bumptech.glide.Glide;
 import com.emad.restaurantproject.OwnerScreens.OwnerActivity;
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
+import com.emad.restaurantproject.database.entities.Favorite;
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
 
 public class HomeFragment extends Fragment implements ItemHomeListener {
 
@@ -79,9 +81,6 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
 
         ShowAllMenuItemsFirstLunch();
 
-        binding.backIv.setOnClickListener(view -> {
-            startActivity(new Intent(getContext(), OwnerActivity.class));
-        });
         binding.cancelSearchIv.setVisibility(View.INVISIBLE);
         return binding.getRoot();
     }
@@ -112,9 +111,19 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
         startActivity(intent);
     }
 
+    @Override
+    public void onClickFavorite(MenuItem menuItem) {
+        viewModel.getFavoriteItemByUserIdAndItemIdLive(userId, menuItem.getMenuItemId()).observe(this, favorite -> {
+            if (favorite == null)
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    viewModel.insertFavoriteItem(new Favorite(menuItem.getMenuItemId(), userId));
+                });
+        });
+    }
+
     void HandleHorizontalRecyclerView() {
 
-        horizontalAdapter = new MenuItemCustomerAdapter(new ArrayList<>(), this);
+        horizontalAdapter = new MenuItemCustomerAdapter(new ArrayList<>(), this, userId, getViewLifecycleOwner());
         binding.menuItemsRv.setAdapter(horizontalAdapter);
         binding.menuItemsRv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
@@ -156,7 +165,7 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
 
     void HandleCategoryRecycler() {
         viewModel.getAllCategories().observe(getViewLifecycleOwner(), categories -> {
-            binding.categoryRv.setAdapter(new CategoryAdapter(categories, this));
+            binding.categoryRv.setAdapter(new CategoryAdapter(requireContext(), categories, this));
             binding.categoryRv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         });
     }

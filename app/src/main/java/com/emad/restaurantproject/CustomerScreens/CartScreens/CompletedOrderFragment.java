@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.CartScreens;
 
 import android.os.Bundle;
 
@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
-import com.emad.restaurantproject.databinding.FragmentCartBinding;
 import com.emad.restaurantproject.databinding.FragmentCompletedOrderBinding;
 
 import java.util.ArrayList;
@@ -54,11 +52,12 @@ public class CompletedOrderFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
 
         OrderAdapter adapter = new OrderAdapter(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-        binding.completedOrdersRv.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.completedOrdersRv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.completedOrdersRv.setAdapter(adapter);
 
 
         viewModel.getOrdersByCustomerId(userId).observe(getViewLifecycleOwner(), orders -> {
+            orders.sort((o1, o2) -> Long.compare(o2.getDate().getTime(), o1.getDate().getTime()));
             adapter.updateOrders(orders);
         });
 

@@ -10,7 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.emad.restaurantproject.CustomerScreens.HomeActivity;
+import com.emad.restaurantproject.CustomerScreens.HomeScreens.HomeActivity;
 import com.emad.restaurantproject.OwnerScreens.OwnerActivity;
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.databinding.ActivityAuthBinding;

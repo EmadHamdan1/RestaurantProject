@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="32"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
     <application
+        android:name=".OwnerScreens.MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,7 +22,13 @@
         android:theme="@style/Theme.RestaurantProject"
         tools:targetApi="31">
         <activity
-            android:name=".CustomerScreens.DetailsMenuItemActivity"
+            android:name=".OwnerScreens.ChooseLanguageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerScreens.ProfileScreens.UpdateUserDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerScreens.HomeScreens.DetailsMenuItemActivity"
             android:exported="false" />
         <activity
             android:name=".OwnerScreens.UpdateMenuItemActivity"
@@ -33,7 +43,7 @@
             android:name=".OwnerScreens.OwnerActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomerScreens.HomeActivity"
+            android:name=".CustomerScreens.HomeScreens.HomeActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity

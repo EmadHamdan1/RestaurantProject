@@ -1,5 +1,6 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.HomeScreens;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,10 +20,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     private int selectedPosition = 0;
     List<Category> categories;
     ItemHomeListener listener;
-
-    public CategoryAdapter(List<Category> categories, ItemHomeListener listener) {
+    public CategoryAdapter(Context context,List<Category> categories, ItemHomeListener listener) {
         this.categories = categories;
-        categories.add(0, new Category("All", R.drawable.all));
+        categories.add(0, new Category(context.getString(R.string.all), R.drawable.all));
         this.listener = listener;
     }
 

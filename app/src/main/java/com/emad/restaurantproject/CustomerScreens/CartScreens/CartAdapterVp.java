@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.CartScreens;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

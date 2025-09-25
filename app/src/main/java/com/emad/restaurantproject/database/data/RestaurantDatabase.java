@@ -12,12 +12,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.dao.CartItemDao;
 import com.emad.restaurantproject.database.dao.CategoryDao;
+import com.emad.restaurantproject.database.dao.FavoriteDao;
 import com.emad.restaurantproject.database.dao.MenuItemDao;
 import com.emad.restaurantproject.database.dao.OrderDao;
 import com.emad.restaurantproject.database.dao.OrderItemDao;
 import com.emad.restaurantproject.database.dao.UserDao;
 import com.emad.restaurantproject.database.entities.CartItem;
 import com.emad.restaurantproject.database.entities.Category;
+import com.emad.restaurantproject.database.entities.Favorite;
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.database.entities.Order;
 import com.emad.restaurantproject.database.entities.OrderItem;
@@ -27,7 +29,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {
-        User.class, Category.class, MenuItem.class, Order.class, OrderItem.class, CartItem.class}
+        User.class, Category.class, MenuItem.class, Order.class, OrderItem.class, CartItem.class, Favorite.class}
         , version = 1, exportSchema = false)
 public abstract class RestaurantDatabase extends RoomDatabase {
 
@@ -43,6 +45,8 @@ public abstract class RestaurantDatabase extends RoomDatabase {
 
     public abstract CartItemDao cartItemDao();
 
+    public abstract FavoriteDao favoriteDao();
+
     private static volatile RestaurantDatabase INSTANCE;
 
     private static final int NUMBER_OF_THREADS = 4;
@@ -50,6 +54,7 @@ public abstract class RestaurantDatabase extends RoomDatabase {
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     static RestaurantDatabase getDatabase(final Context context) {
+        appContext = context;
         if (INSTANCE == null) {
             synchronized (RestaurantDatabase.class) {
                 if (INSTANCE == null) {
@@ -65,6 +70,7 @@ public abstract class RestaurantDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+    private static Context appContext;
     // لتخزين البيانات عند فتح التطبيق اول مرة
     private static final RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
         @Override
@@ -76,11 +82,11 @@ public abstract class RestaurantDatabase extends RoomDatabase {
 
                 CategoryDao categoryDao = INSTANCE.categoryDao();
 
-                categoryDao.insertCategory(new Category("Main Dishes", R.drawable.main_dish));
-                categoryDao.insertCategory(new Category("Starters", R.drawable.starters));
-                categoryDao.insertCategory(new Category("Drinks", R.drawable.drinks));
-                categoryDao.insertCategory(new Category("Desserts", R.drawable.desserts));
-                categoryDao.insertCategory(new Category("Extras", R.drawable.extras));
+                categoryDao.insertCategory(new Category(appContext.getString(R.string.main_dishes), R.drawable.main_dish));
+                categoryDao.insertCategory(new Category(appContext.getString(R.string.starters), R.drawable.starters));
+                categoryDao.insertCategory(new Category(appContext.getString(R.string.drinks), R.drawable.drinks));
+                categoryDao.insertCategory(new Category(appContext.getString(R.string.desserts), R.drawable.desserts));
+                categoryDao.insertCategory(new Category(appContext.getString(R.string.extras), R.drawable.extras));
 
             });
         }

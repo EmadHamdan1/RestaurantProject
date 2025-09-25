@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerScreens.HomeFragment">
+    tools:context=".CustomerScreens.HomeScreens.HomeFragment">
 
     <ScrollView
         android:layout_width="0dp"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/backIv"
+                android:id="@+id/notificationsIv"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:layout_marginTop="20dp"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="Good Morning 👋"
+                android:text="@string/good_morning_tv_home_screen"
                 android:textColor="#404040"
                 app:layout_constraintStart_toEndOf="@+id/photoUserIv"
                 app:layout_constraintTop_toTopOf="@id/photoUserIv" />
@@ -85,7 +85,7 @@
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/search_et"
                     android:drawablePadding="10dp"
-                    android:hint="Restaurant Foods..."
+                    android:hint="@string/restaurant_foods_hint_et_home_screen"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:singleLine="true" />
@@ -109,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Explore MenuItem"
+                android:text="@string/explore_menuitem_tv_home_screen"
                 android:textColor="#1F1F1F"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -144,14 +144,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="All Categories"
+                android:text="@string/all_categories_home_screen"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/menuItemsRv" />
 
-            <com.emad.restaurantproject.CustomerScreens.NonScrollRecyclerView
+            <com.emad.restaurantproject.CustomerScreens.HomeScreens.NonScrollRecyclerView
                 android:id="@+id/menuItemsVerticalRv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

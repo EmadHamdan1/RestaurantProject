@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مشروع المطعم</string>
+    <string name="hello_blank_fragment">مرحبا، شاشة فارغة</string>
+    <string name="next_bt_welcome">التالي</string>
+    <string name="get_started_bt_welcome">ابدأ</string>
+    <string name="title_splash_tv">العنوان</string>
+    <string name="text_splash_tv">النص</string>
+    <string name="sign_up_tv_register">إنشاء حساب</string>
+    <string name="create_account_tv_register">أنشئ حساب</string>
+    <string name="name_hint_register">الاسم</string>
+    <string name="email_hint_register">البريد الإلكتروني</string>
+    <string name="password_hint__register">كلمة المرور</string>
+    <string name="sign_up_bt_register">تسجيل</string>
+    <string name="already_have_an_account_tv_register">لديك حساب بالفعل؟</string>
+    <string name="sign_in_tv_register">تسجيل الدخول</string>
+    <string name="login_here_tv_login">سجّل الدخول هنا</string>
+    <string name="welcome_back_you_ve_been_missed_tv_login">مرحبًا بعودتك، لقد افتقدناك!</string>
+    <string name="email_hint_login">البريد الإلكتروني</string>
+    <string name="password_hint_login">كلمة المرور</string>
+    <string name="forget_your_password_tv_login">هل نسيت كلمة المرور؟</string>
+    <string name="sign_in_bt_login">تسجيل الدخول</string>
+    <string name="create_new_account_tv_login">إنشاء حساب جديد</string>
+    <string name="add_new_item_add_screen">إضافة عنصر جديد</string>
+    <string name="name_add_screen">الاسم</string>
+    <string name="price_add_screen">السعر</string>
+    <string name="calories_add_screen">السعرات الحرارية</string>
+    <string name="description_add_screen">الوصف</string>
+    <string name="add_item_add_screen">إضافة عنصر</string>
+    <string name="discover_your_dream_job_here_auth_screen">اكتشف وظيفتك المثالية هنا</string>
+    <string name="discover_your_dream_job_here_discover_your_dream_job_herediscover_auth_screen">اكتشف وظيفتك المثالية هنا اكتشف وظيفتك المثالية هنا اكتشف</string>
+    <string name="login_auth_screen">تسجيل الدخول</string>
+    <string name="register_auth_screen">التسجيل</string>
+    <string name="name_item_details_screen">الاسم</string>
+    <string name="categoryname_item_details_screen">اسم الفئة</string>
+    <string name="calories_item_details_screen">🔥 سعرة حرارية</string>
+    <string name="price_item_details_screen">$ 20.00</string>
+    <string name="details_item_details_screen">التفاصيل</string>
+    <string name="description_item_details_screen">الوصف</string>
+    <string name="quantity_item_details_screen">0</string>
+    <string name="add_cart_item_details_screen">إضافة إلى السلة</string>
+    <string name="forget_password_forget_password_screen">نسيت كلمة المرور</string>
+    <string name="new_password_forget_password_screen">كلمة مرور جديدة</string>
+    <string name="reset_password_forget_password_screen">إعادة تعيين كلمة المرور</string>
+    <string name="update_item_tv_update_item_screen">تحديث العنصر</string>
+    <string name="new_name_et_update_item_screen">اسم جديد</string>
+    <string name="new_price_et_update_item_screen">سعر جديد</string>
+    <string name="new_calories_et_update_item_screen">سعرات جديدة</string>
+    <string name="description_et_update_item_screen">الوصف</string>
+    <string name="update_item_bt_update_item_screen">تحديث العنصر</string>
+    <string name="edit_or_delete_tv_bottom_dialog">تعديل أو حذف</string>
+    <string name="edit_tv_bottom_dialog">تعديل</string>
+    <string name="delete_tv_bottom_dialog">حذف</string>
+    <string name="my_cart_tv_cart_screen">سلتي</string>
+    <string name="favorite_food_favorite_screen">الأطعمة المفضلة</string>
+    <string name="good_morning_tv_home_screen">صباح الخير 👋</string>
+    <string name="restaurant_foods_hint_et_home_screen">أطعمة المطعم...</string>
+    <string name="explore_menuitem_tv_home_screen">استكشف قائمة الطعام</string>
+    <string name="all_categories_home_screen">جميع الفئات</string>
+    <string name="total_price_tv_home_screen">السعر الإجمالي</string>
+    <string name="total_price_home_screen">$5000</string>
+    <string name="checkout_bt_home_screen">إتمام الطلب</string>
+    <string name="pizza_marg_tv_item_cart">بيتزا مارج</string>
+    <string name="calories_tv_item_cart">🔥 88 سعر حراري</string>
+    <string name="quantity_item_cart">3</string>
+    <string name="dollar_item_cart">$</string>
+    <string name="price_item_cart">10.00</string>
+    <string name="burger_tv_item_category">برجر</string>
+    <string name="pizza_marg_tv_item_favorite">بيتزا مارج</string>
+    <string name="calories_tv_item_favorite">🔥 88 سعر حراري</string>
+    <string name="dollar_tv_item_favorite">$</string>
+    <string name="price_tv_item_favorite">10.00</string>
+    <string name="name_tv_item_customer_h">بيتزا مارج</string>
+    <string name="calories_tv_item_customer_h">🔥 88 سعر حراري</string>
+    <string name="price_tv_item_customer_h">$ 10.00</string>
+    <string name="name_tv_item_owner">بيتزا مارج</string>
+    <string name="calories_tv_item_owner">🔥 88 سعر حراري</string>
+    <string name="price_tv_item_owner">$ 10.00</string>
+    <string name="name_tv_item_customer_v">بيتزا مارج</string>
+    <string name="calories_tv_item_customer_v">🔥 88 سعر حراري</string>
+    <string name="price_tv_item_customer_v">$ 10.00</string>
+    <string name="order_tv_item_bill">طلب #</string>
+    <string name="date_tv_item_bill">2 / 8 / 2025</string>
+    <string name="dollar_tv_item_bill">$</string>
+    <string name="price_tv_item_bill">10.00</string>
+    <string name="total_price_tv_item_bill">السعر الإجمالي :</string>
+    <string name="name_tv_menu_item_bill">دجاج</string>
+    <string name="quantity_tv_menu_item_bill">2 ×</string>
+    <string name="price_tv_menu_item_bill">30</string>
+    <string name="total_price_tv_menu_item_bill">100.00</string>
+    <string name="main_dishes">الأطباق الرئيسية</string>
+    <string name="starters">المقبلات</string>
+    <string name="drinks">المشروبات</string>
+    <string name="desserts">الحلويات</string>
+    <string name="extras">إضافات</string>
+    <string name="all">الكل</string>
+    <string name="live_order">الطلب الحالي</string>
+    <string name="completed_order">الطلبات المكتملة</string>
+    <string name="delicious_food">طعام شهي</string>
+    <string name="enjoy_a_unique_and_tasty_dining_experience">استمتع بتجربة طعام فريدة ولذيذة</string>
+    <string name="order_with_ease">اطلب بسهولة</string>
+    <string name="browse_the_menu_and_order_your_favorite_meal_in_just_a_few_steps">تصفح القائمة واطلب وجبتك المفضلة في خطوات قليلة</string>
+    <string name="let_s_eat">هيا نأكل!</string>
+    <string name="explore_our_special_dishes_and_get_your_meal_fast">اكتشف أطباقنا الخاصة واحصل على وجبتك بسرعة</string>
+    <string name="home_bottom_navigation_menu">الرئيسية</string>
+    <string name="cart_bottom_navigation_menu">السلة</string>
+    <string name="favorite_bottom_navigation_menu">المفضلة</string>
+    <string name="profile_bottom_navigation_menu">الملف الشخصي</string>
+    <string name="menu_bottom_navigation_menu_owner">القائمة</string>
+    <string name="profile_bottom_navigation_menu_owner">الملف الشخصي</string>
+    <string name="calories_item_customer">" سعرة حرارية"</string>
+    <string name="profile_tv_owner">الملف الشخصي</string>
+    <string name="email_tv_owner">emad123@gmail.com</string>
+    <string name="edit_profile_tv_owner">تعديل الملف الشخصي</string>
+    <string name="language_tv_owner">اللغة</string>
+    <string name="dark_mood_tv_owner">الوضع الليلي</string>
+    <string name="logout_tv_owner">تسجيل الخروج</string>
+    <string name="english_us_tv_owner">الانجليزية</string>
+    <string name="arabic_tv_owner">العربية</string>
+    <string name="my_orders_tv_customer">طلباتي</string>
+    <string name="update_data_tv_owner">تحديث البيانات</string>
+    <string name="new_name_tv_owner">الاسم الجديد</string>
+    <string name="new_email_tv_owner">البريد الإلكتروني الجديد</string>
+    <string name="new_password_tv_owner">كلمة المرور الجديدة</string>
+    <string name="update_bt_owner">تحديث</string>
+    <string name="logout_tv">خروج</string>
+    <string name="are_you_sure_you_want_to_logout_tv">هل انت متأكد انك تريد الخروج </string>
+    <string name="cancel_bt">الغاء</string>
+    <string name="yes_logout_bt">نعم, خروج</string>
+</resources>

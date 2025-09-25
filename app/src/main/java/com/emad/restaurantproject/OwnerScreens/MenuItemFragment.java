@@ -30,7 +30,6 @@ public class MenuItemFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         FragmentMenuItemBinding binding = FragmentMenuItemBinding.inflate(inflater, container, false);
-
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         adapter = new MenuItemOwnerAdapter(new ArrayList<>(), new ArrayList<>(), new MenuItemListener() {

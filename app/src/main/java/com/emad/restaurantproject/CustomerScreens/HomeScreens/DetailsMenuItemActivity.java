@@ -1,8 +1,9 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.HomeScreens;
 
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,13 +48,21 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
         HandleQuantity();
 
         binding.addToCartBt.setOnClickListener(view -> AddItemToCart());
+
+        binding.arrowBackIv.setOnClickListener(view -> {
+            finish();
+        });
+
     }
 
 
     void AddItemToCart() {
-        addOrUpdateCartItem(new CartItem(menuItem.getMenuItemId(),
-                Integer.parseInt(binding.quantityTv.getText().toString()),
-                menuItem.getPrice(), getIntent().getIntExtra("customerId", -1)));
+        if (Integer.parseInt(binding.quantityTv.getText().toString()) > 0)
+            addOrUpdateCartItem(new CartItem(menuItem.getMenuItemId(),
+                    Integer.parseInt(binding.quantityTv.getText().toString()),
+                    menuItem.getPrice(), getIntent().getIntExtra("customerId", -1)));
+        else
+            Toast.makeText(this, "Add Quantity", Toast.LENGTH_SHORT).show();
     }
 
     public void addOrUpdateCartItem(CartItem newItem) {

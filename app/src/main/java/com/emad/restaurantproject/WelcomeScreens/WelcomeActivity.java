@@ -62,9 +62,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
     void CreateFragments() {
         ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(WelcomeFragment.newInstance(R.drawable.lunch_time, "Delicious Food", "Enjoy a unique and tasty dining experience"));
-        fragments.add(WelcomeFragment.newInstance(R.drawable.order_food, "Order with Ease", "Browse the menu and order your favorite meal in just a few steps"));
-        fragments.add(WelcomeFragment.newInstance(R.drawable.eat_breakfast, "Let’s Eat!", "Explore our special dishes and get your meal fast"));
+        fragments.add(WelcomeFragment.newInstance(R.drawable.lunch_time, getString(R.string.delicious_food), getString(R.string.enjoy_a_unique_and_tasty_dining_experience)));
+        fragments.add(WelcomeFragment.newInstance(R.drawable.order_food, getString(R.string.order_with_ease), getString(R.string.browse_the_menu_and_order_your_favorite_meal_in_just_a_few_steps)));
+        fragments.add(WelcomeFragment.newInstance(R.drawable.eat_breakfast, getString(R.string.let_s_eat), getString(R.string.explore_our_special_dishes_and_get_your_meal_fast)));
         binding.fragmentContainerVp.setAdapter(new WelcomeAdapter(this, fragments));
     }
 

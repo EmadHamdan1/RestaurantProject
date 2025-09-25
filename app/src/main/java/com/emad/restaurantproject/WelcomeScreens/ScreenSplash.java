@@ -11,15 +11,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.emad.restaurantproject.CustomerScreens.HomeActivity;
 import com.emad.restaurantproject.R;
-import com.emad.restaurantproject.database.data.MyRepository;
 import com.emad.restaurantproject.database.data.MyViewModel;
-import com.emad.restaurantproject.database.entities.Category;
-import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.databinding.ActivityScreenSplashBinding;
-
-import java.util.List;
 
 public class ScreenSplash extends AppCompatActivity {
 

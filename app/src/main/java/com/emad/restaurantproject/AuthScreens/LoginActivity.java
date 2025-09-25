@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.emad.restaurantproject.CustomerScreens.HomeActivity;
+import com.emad.restaurantproject.CustomerScreens.HomeScreens.HomeActivity;
 import com.emad.restaurantproject.OwnerScreens.OwnerActivity;
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
@@ -92,13 +92,13 @@ public class LoginActivity extends AppCompatActivity {
 
     void CheckUserType(User userByEmail) {
         if (userByEmail.getUserType().equalsIgnoreCase("customer")) {
-            Intent intent = new Intent(getBaseContext(), HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            Intent intent = new Intent(getBaseContext(), HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("customerId", userByEmail.getUserId());
             startActivity(intent);
             finish();
 
         } else if (userByEmail.getUserType().equalsIgnoreCase("owner")) {
-            startActivity(new Intent(getBaseContext(), OwnerActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            startActivity(new Intent(getBaseContext(), OwnerActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
             finish();
         }
 

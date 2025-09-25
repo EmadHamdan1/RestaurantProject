@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menuItem"
         android:icon="@drawable/ic_home_owner"
-        android:title="Menu" />
+        android:title="@string/menu_bottom_navigation_menu_owner" />
 
 
     <item
@@ -14,8 +14,8 @@
 
     <item
         android:id="@+id/profileItem"
-        android:icon="@drawable/ic_home_owner"
-        android:title="Profile" />
+        android:icon="@drawable/profile_about"
+        android:title="@string/profile_bottom_navigation_menu_owner" />
 
 
 </menu>

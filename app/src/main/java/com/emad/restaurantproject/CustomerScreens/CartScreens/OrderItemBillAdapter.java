@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.CartScreens;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -9,9 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.emad.restaurantproject.database.entities.MenuItem;
-import com.emad.restaurantproject.database.entities.Order;
 import com.emad.restaurantproject.database.entities.OrderItem;
-import com.emad.restaurantproject.databinding.ItemOrderBinding;
 import com.emad.restaurantproject.databinding.ItemOrderItemBillBinding;
 
 import java.util.List;
@@ -41,7 +39,7 @@ public class OrderItemBillAdapter extends RecyclerView.Adapter<OrderItemBillAdap
         OrderItem orderItem = ordersItems.get(position);
 
         for (MenuItem menuItem : menuItems) {
-            if (menuItem.getMenuItemId() == menuItems.get(position).getMenuItemId()) {
+            if (menuItem.getMenuItemId() == orderItem.getMenuItemId()) {
                 holder.nameItemTv.setText(menuItem.getName());
             }
         }

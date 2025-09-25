@@ -1,4 +1,4 @@
-package com.emad.restaurantproject.CustomerScreens;
+package com.emad.restaurantproject.CustomerScreens.CartScreens;
 
 import android.annotation.SuppressLint;
 
@@ -10,12 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.emad.restaurantproject.database.data.MyViewModel;
+import com.emad.restaurantproject.CustomerScreens.HomeScreens.NonScrollRecyclerView;
 
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.database.entities.Order;
@@ -25,10 +23,8 @@ import com.emad.restaurantproject.databinding.ItemOrderBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
 
