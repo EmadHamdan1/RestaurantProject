@@ -27,7 +27,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/sign_up_tv_register"
         android:textColor="@color/colorPrimary"
-        android:textSize="50sp"
+        android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/arrowBackIv" />
 
@@ -41,7 +41,7 @@
         android:text="@string/create_account_tv_register"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signInTvSignUp" />

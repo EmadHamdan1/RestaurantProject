@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">مشروع المطعم</string>
-    <string name="hello_blank_fragment">مرحبا، شاشة فارغة</string>
+    <string name="hello_blank_fragment">مرحبا، شاشة</string>
     <string name="next_bt_welcome">التالي</string>
     <string name="get_started_bt_welcome">ابدأ</string>
     <string name="title_splash_tv">العنوان</string>
@@ -27,8 +27,8 @@
     <string name="calories_add_screen">السعرات الحرارية</string>
     <string name="description_add_screen">الوصف</string>
     <string name="add_item_add_screen">إضافة عنصر</string>
-    <string name="discover_your_dream_job_here_auth_screen">اكتشف وظيفتك المثالية هنا</string>
-    <string name="discover_your_dream_job_here_discover_your_dream_job_herediscover_auth_screen">اكتشف وظيفتك المثالية هنا اكتشف وظيفتك المثالية هنا اكتشف</string>
+    <string name="discover_your_dream_job_here_auth_screen">اكتشف أشهى المأكولات هنا</string>
+    <string name="discover_your_dream_job_here_discover_your_dream_job_herediscover_auth_screen">تصفّح قائمتنا واستمتع بتجربة طعام مميزة ببضع خطوات فقط</string>
     <string name="login_auth_screen">تسجيل الدخول</string>
     <string name="register_auth_screen">التسجيل</string>
     <string name="name_item_details_screen">الاسم</string>
@@ -110,7 +110,7 @@
     <string name="profile_bottom_navigation_menu_owner">الملف الشخصي</string>
     <string name="calories_item_customer">" سعرة حرارية"</string>
     <string name="profile_tv_owner">الملف الشخصي</string>
-    <string name="email_tv_owner">emad123@gmail.com</string>
+    <string name="email_tv_owner">admin123@gmail.com</string>
     <string name="edit_profile_tv_owner">تعديل الملف الشخصي</string>
     <string name="language_tv_owner">اللغة</string>
     <string name="dark_mood_tv_owner">الوضع الليلي</string>

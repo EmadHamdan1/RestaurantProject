@@ -12,10 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.emad.restaurantproject.CustomerScreens.CartScreens.CartFragment;
 import com.emad.restaurantproject.CustomerScreens.FavoriteScreens.FavoriteFragment;
 import com.emad.restaurantproject.CustomerScreens.ProfileScreens.ProfileCustomerFragment;
-import com.emad.restaurantproject.OwnerScreens.MenuItemFragment;
-import com.emad.restaurantproject.OwnerScreens.ProfileOwnerFragment;
 import com.emad.restaurantproject.R;
-import com.emad.restaurantproject.WelcomeScreens.WelcomeFragment;
 import com.emad.restaurantproject.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends AppCompatActivity {

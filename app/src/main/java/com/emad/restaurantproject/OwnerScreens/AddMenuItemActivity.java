@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -19,6 +20,7 @@ import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.databinding.ActivityAddMenuItemBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.concurrent.Executors;
 
@@ -99,7 +101,23 @@ public class AddMenuItemActivity extends AppCompatActivity {
 
             Executors.newSingleThreadExecutor().execute(() -> {
                 viewModel.insertMenuItem(new MenuItem(name, Double.parseDouble(price), Integer.parseInt(calories), imageUri, categoryId, description));
-                ShowToast("Added Item Successfully");
+
+                runOnUiThread(() -> {
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+                    builder.setTitle("Item Added")
+                            .setMessage("The menu item has been successfully added!")
+                            .setIcon(R.drawable.success)
+                            .setPositiveButton("OK", (dialog, which) -> {
+                                dialog.dismiss();
+                                finish();
+                            });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                            .setTextColor(getResources().getColor(R.color.colorPrimary));
+                });
 
             });
 

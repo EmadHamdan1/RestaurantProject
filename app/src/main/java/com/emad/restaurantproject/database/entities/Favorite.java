@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "favorite_table",
         foreignKeys = {
-                @ForeignKey(entity = MenuItem.class, parentColumns = {"menuItemId"}, childColumns = {"menuItemId"}),
+                @ForeignKey(entity = MenuItem.class, parentColumns = {"menuItemId"}, childColumns = {"menuItemId"}, onDelete = ForeignKey.CASCADE),
                 @ForeignKey(entity = User.class, parentColumns = {"userId"}, childColumns = {"customerId"})})
 public class Favorite {
 

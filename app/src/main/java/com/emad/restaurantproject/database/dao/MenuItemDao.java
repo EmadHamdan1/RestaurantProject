@@ -26,7 +26,7 @@ public interface MenuItemDao {
     @Query("SELECT * FROM menu_item_table")
     LiveData<List<MenuItem>> getAllMenuItems();
 
-    @Query("SELECT * FROM menu_item_table WHERE name =:name")
+    @Query("SELECT * FROM menu_item_table WHERE name LIKE '%' || :name || '%'")
     LiveData<List<MenuItem>> getAllMenuItemsByName(String name);
 
     @Query("SELECT * FROM menu_item_table WHERE categoryId =:categoryId")

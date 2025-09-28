@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -18,6 +19,7 @@ import com.emad.restaurantproject.database.data.MyViewModel;
 import com.emad.restaurantproject.database.entities.CartItem;
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.databinding.ActivityDetailsMenuItemBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.concurrent.Executors;
 
@@ -62,7 +64,7 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
                     Integer.parseInt(binding.quantityTv.getText().toString()),
                     menuItem.getPrice(), getIntent().getIntExtra("customerId", -1)));
         else
-            Toast.makeText(this, "Add Quantity", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Pls Add Quantity", Toast.LENGTH_SHORT).show();
     }
 
     public void addOrUpdateCartItem(CartItem newItem) {
@@ -73,6 +75,9 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
 
             if (cartItem == null) {
                 viewModel.insertCartItem(newItem);
+
+                showAlert("Added to Cart", "The product has been successfully added to your cart!", R.drawable.all);
+
             } else {
 
                 int updatedQuantity = cartItem.getQuantity() + newItem.getQuantity();
@@ -82,6 +87,7 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
                         cartItem.getCustomerId());
 
                 viewModel.updateCartItem(updatedItem);
+                showAlert("Cart Updated", "The quantity has been updated to " + updatedQuantity, R.drawable.all);
 
             }
         });
@@ -122,7 +128,25 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
                 binding.quantityTv.setText(String.valueOf(--quantity));
         });
 
-
     }
+
+    private void showAlert(String title, String message, int iconRes) {
+        runOnUiThread(() -> {
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            builder.setTitle(title)
+                    .setIcon(iconRes)
+                    .setMessage(message)
+                    .setPositiveButton("OK", (dialog, which) -> {
+
+                    });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                    .setTextColor(getResources().getColor(R.color.colorPrimary));
+        });
+    }
+
 
 }

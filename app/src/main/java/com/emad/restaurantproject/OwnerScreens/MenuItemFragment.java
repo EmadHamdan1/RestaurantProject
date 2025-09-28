@@ -3,6 +3,7 @@ package com.emad.restaurantproject.OwnerScreens;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.databinding.FragmentMenuItemBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 
@@ -43,9 +46,29 @@ public class MenuItemFragment extends Fragment {
             @Override
             public void onDeleteItem(MenuItem item) {
                 if (item != null) {
-                    viewModel.deleteMenuItem(item);
+                    requireActivity().runOnUiThread(() -> {
+                        new MaterialAlertDialogBuilder(requireActivity())
+                                .setTitle("Delete Item")
+                                .setIcon(R.drawable.warning)
+                                .setMessage("Warning! If you delete this item, it will be removed from all orders and the entire system. Are you sure?")
+                                .setPositiveButton("Delete", (dialog, which) -> {
+                                    viewModel.deleteMenuItem(item);
+
+                                    new MaterialAlertDialogBuilder(requireActivity())
+                                            .setTitle("Deleted")
+                                            .setIcon(R.drawable.delete_dialog)
+                                            .setMessage("The item has been successfully deleted from the system.")
+                                            .setPositiveButton("OK", null)
+                                            .show();
+                                })
+                                .setNegativeButton("Cancel", (dialog, which) -> {
+                                    dialog.dismiss();
+                                })
+                                .show();
+                    });
                 }
             }
+
 
         });
 

@@ -7,6 +7,7 @@ import android.util.Patterns;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,6 +18,7 @@ import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
 import com.emad.restaurantproject.database.entities.User;
 import com.emad.restaurantproject.databinding.ActivityRegisterBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -92,12 +94,33 @@ public class RegisterActivity extends AppCompatActivity {
                 User userByEmail = viewModel.getUserByEmail(user.getEmail());
 
                 if (userByEmail != null) {
-                    ShowToast("User already exists");
+                    showDialog("Registration Failed", "User already exists");
                 } else {
+
                     viewModel.insertUser(user);
-                    ShowToast("Registration successful");
-                    runOnUiThread(this::ClearFieldsData);
-                    finish();
+
+                    runOnUiThread(() -> {
+                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+                        builder.setTitle("Success")
+                                .setMessage("Registration successful")
+                                .setIcon(R.drawable.success)
+                                .setPositiveButton("OK", (dialog, which) -> {
+
+                                    runOnUiThread(this::ClearFieldsData);
+
+                                    runOnUiThread(() -> {
+                                        startActivity(new Intent(getBaseContext(), LoginActivity.class));
+                                        finish();
+                                    });
+
+                                });
+
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                                .setTextColor(getResources().getColor(R.color.colorPrimary));
+                    });
                 }
             });
 
@@ -123,6 +146,22 @@ public class RegisterActivity extends AppCompatActivity {
     void ClickArrowBack() {
         binding.arrowBackIv.setOnClickListener(view -> {
             finish();
+        });
+    }
+
+    private void showDialog(String title, String message) {
+        runOnUiThread(() -> {
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            builder.setTitle(title)
+                    .setMessage(message)
+                    .setIcon(R.drawable.success)
+                    .setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                    .setTextColor(getResources().getColor(R.color.colorPrimary));
         });
     }
 

@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -19,6 +20,7 @@ import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
 import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.databinding.ActivityUpdateMenuItemBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.concurrent.Executors;
 
@@ -134,7 +136,22 @@ public class UpdateMenuItemActivity extends AppCompatActivity {
 
                 if (oldId != null) {
                     viewModel.updateMenuItem(new MenuItem(oldId.getMenuItemId(), name, Double.parseDouble(price), Integer.parseInt(calories), imageUri, categoryId, description));
-                    ShowToast("Update Item Successfully");
+                    runOnUiThread(() -> {
+                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+                        builder.setTitle("Update Successful")
+                                .setIcon(R.drawable.success)
+                                .setMessage("Your Item data has been updated successfully!")
+                                .setPositiveButton("OK", (dialog, which) -> {
+                                    finish();
+                                });
+
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                                .setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                    });
                 }
             });
 
@@ -148,13 +165,6 @@ public class UpdateMenuItemActivity extends AppCompatActivity {
             intent.setType("image/*");
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             launcher.launch(intent);
-        });
-    }
-
-    void ShowToast(String message) {
-        runOnUiThread(() -> {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-            finish();
         });
     }
 

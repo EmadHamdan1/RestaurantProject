@@ -91,6 +91,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     void CheckUserType(User userByEmail) {
+
+        if (userByEmail == null || userByEmail.getUserType() == null) {
+            ShowToast("User type not found");
+            return;
+        }
+
         if (userByEmail.getUserType().equalsIgnoreCase("customer")) {
             Intent intent = new Intent(getBaseContext(), HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("customerId", userByEmail.getUserId());

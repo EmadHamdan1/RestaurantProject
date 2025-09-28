@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,6 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.bumptech.glide.Glide;
 
-import com.emad.restaurantproject.OwnerScreens.OwnerActivity;
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
 import com.emad.restaurantproject.database.entities.Favorite;
@@ -171,62 +172,47 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
     }
 
     void HandleSearchEt() {
+        binding.searchEtHome.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-        binding.searchEtHome.setOnEditorActionListener((textView, actionId, keyEvent) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String query = s.toString().trim();
 
-                InputMethodManager imm = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm != null) {
-                    imm.hideSoftInputFromWindow(binding.searchEtHome.getWindowToken(), 0);
-                }
-                binding.searchEtHome.clearFocus();
-                binding.searchEtHome.setCursorVisible(false);
+                if (!query.isEmpty()) {
+                    binding.cancelSearchIv.setVisibility(View.VISIBLE);
+                    binding.categoryRv.setVisibility(View.GONE);
+                    binding.menuItemsRv.setVisibility(View.GONE);
+                    binding.exploreTV.setVisibility(View.GONE);
+                    binding.titleTv.setVisibility(View.GONE);
 
-                binding.cancelSearchIv.setVisibility(View.VISIBLE);
-
-                binding.categoryRv.setVisibility(View.GONE);
-                binding.menuItemsRv.setVisibility(View.GONE);
-                binding.exploreTV.setVisibility(View.GONE);
-                binding.titleTv.setVisibility(View.GONE);
-
-                verticalAdapter = new MenuItemCustomerVerticalAdapter(new ArrayList<>(), new ArrayList<>(), this);
-                binding.menuItemsVerticalRv.setAdapter(verticalAdapter);
-
-
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-                binding.menuItemsVerticalRv.setLayoutManager(gridLayoutManager);
-
-                viewModel.getAllMenuItemsByName(binding.searchEtHome.getText().toString()).observe(getViewLifecycleOwner(), menuItems -> {
-                    verticalAdapter.updateMenuItems(menuItems);
-                });
-
-                viewModel.getAllCategories().observe(getViewLifecycleOwner(), categories -> {
-                    verticalAdapter.setCategories(categories);
-                });
-
-                binding.cancelSearchIv.setOnClickListener(view -> {
+                    viewModel.getAllMenuItemsByName(query).observe(getViewLifecycleOwner(), menuItems -> {
+                        verticalAdapter.updateMenuItems(menuItems);
+                    });
+                } else {
 
                     binding.cancelSearchIv.setVisibility(View.INVISIBLE);
-
                     binding.categoryRv.setVisibility(View.VISIBLE);
                     binding.menuItemsRv.setVisibility(View.VISIBLE);
                     binding.exploreTV.setVisibility(View.VISIBLE);
                     binding.titleTv.setVisibility(View.VISIBLE);
 
-                    binding.searchEtHome.setText("");
-
                     viewModel.getAllMenuItems().observe(getViewLifecycleOwner(), menuItems -> {
                         verticalAdapter.updateMenuItems(menuItems);
                     });
-
-                });
-
-                return true;
+                }
             }
-            return false;
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
 
+        binding.cancelSearchIv.setOnClickListener(view -> {
+            binding.searchEtHome.setText("");
+        });
     }
+
 
     void ShowUserData() {
 

@@ -1,11 +1,21 @@
 package com.emad.restaurantproject.CustomerScreens.CartScreens;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,6 +35,8 @@ import com.emad.restaurantproject.database.entities.CartItem;
 import com.emad.restaurantproject.database.entities.Order;
 import com.emad.restaurantproject.database.entities.OrderItem;
 import com.emad.restaurantproject.databinding.FragmentLiveCartBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,6 +44,8 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 import android.graphics.Canvas;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class LiveCartFragment extends Fragment implements CartAdapter.CartQuantityListener {
 
@@ -41,6 +55,7 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
     private int userId;
     MyViewModel viewModel;
     CartAdapter adapter;
+    public static final String CHANNEL_ID = "channel1";
 
     public LiveCartFragment() {
         // Required empty public constructor
@@ -96,8 +111,7 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
     private ItemTouchHelper.SimpleCallback getItemTouchHelper() {
         return new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
 
-            Drawable deleteIcon = ContextCompat.getDrawable(getContext(), R.drawable.outline_cancel_24);
-            ColorDrawable background = new ColorDrawable(Color.BLACK);
+            Drawable deleteIcon = ContextCompat.getDrawable(getContext(), R.drawable.delete_dialog);
 
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView,
@@ -124,22 +138,14 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
 
                 View itemView = viewHolder.itemView;
 
-                int iconMargin = (itemView.getHeight() - deleteIcon.getIntrinsicHeight()) / 2;
-
-                int boxSize = deleteIcon.getIntrinsicWidth() + 40;
-                int boxLeft = itemView.getLeft() + iconMargin - 20;
-                int boxTop = itemView.getTop() + iconMargin - 20;
-                int boxRight = boxLeft + boxSize;
-                int boxBottom = boxTop + boxSize;
-
-                ColorDrawable boxBackground = new ColorDrawable(Color.BLACK);
-                boxBackground.setBounds(boxLeft, boxTop, boxRight, boxBottom);
-                boxBackground.draw(c);
+                int iconSize = (int) (48 * getResources().getDisplayMetrics().density);
+                int iconMargin = (itemView.getHeight() - iconSize) / 2;
 
                 int iconLeft = itemView.getLeft() + iconMargin;
                 int iconTop = itemView.getTop() + iconMargin;
-                int iconRight = iconLeft + deleteIcon.getIntrinsicWidth();
-                int iconBottom = iconTop + deleteIcon.getIntrinsicHeight();
+                int iconRight = iconLeft + iconSize;
+                int iconBottom = iconTop + iconSize;
+
                 deleteIcon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
                 deleteIcon.draw(c);
 
@@ -183,6 +189,25 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
 
                 viewModel.clearCart(userId);
 
+                requireActivity().runOnUiThread(() -> {
+
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireActivity());
+                    builder.setTitle("Order Completed")
+                            .setIcon(R.drawable.success)
+                            .setMessage("Your order has been completed successfully!")
+                            .setPositiveButton("OK", (dialog, which) -> {
+                            });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                            .setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                });
+
+                notificationCompleteOrder();
+
             } else {
                 requireActivity().runOnUiThread(() -> {
                     Toast.makeText(getContext(), "The Cart is Empty", Toast.LENGTH_SHORT).show();
@@ -210,4 +235,30 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
             }
         });
     }
+
+    @SuppressLint("MissingPermission")
+    void notificationCompleteOrder() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            NotificationChannel channel = new NotificationChannel
+                    (CHANNEL_ID, "channel name", NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager manager = getSystemService(requireActivity(), NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireActivity(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.restaurant)
+                .setContentTitle("Completed Order")
+                .setContentText("Your Order is Completed")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(requireActivity());
+        managerCompat.notify(1, builder.build());
+        builder.clearActions();
+
+    }
+
 }

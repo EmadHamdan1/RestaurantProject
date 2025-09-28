@@ -100,10 +100,6 @@ public class ProfileCustomerFragment extends Fragment {
             startActivity(new Intent(getActivity(), UpdateUserDataActivity.class).putExtra("userId", userId));
         });
 
-        binding.orderCl.setOnClickListener(view -> {
-
-        });
-
         binding.languageCl.setOnClickListener(view -> {
             launcher.launch(new Intent(getActivity(), ChooseLanguageActivity.class));
         });

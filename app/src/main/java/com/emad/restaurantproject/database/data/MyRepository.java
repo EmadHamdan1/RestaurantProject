@@ -3,10 +3,6 @@ package com.emad.restaurantproject.database.data;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-import androidx.room.Update;
 
 import com.emad.restaurantproject.database.dao.CartItemDao;
 import com.emad.restaurantproject.database.dao.CategoryDao;

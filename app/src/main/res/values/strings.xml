@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Restaurant Project</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Cavaro</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="next_bt_welcome">Next</string>
     <string name="get_started_bt_welcome">Get Started</string>
@@ -27,8 +27,8 @@
     <string name="calories_add_screen">Calories</string>
     <string name="description_add_screen">Description</string>
     <string name="add_item_add_screen">Add Item</string>
-    <string name="discover_your_dream_job_here_auth_screen">Discover Your Dream Job Here</string>
-    <string name="discover_your_dream_job_here_discover_your_dream_job_herediscover_auth_screen">Discover Your Dream Job Here Discover Your Dream Job HereDiscover</string>
+    <string name="discover_your_dream_job_here_auth_screen">Discover Delicious Food Here</string>
+    <string name="discover_your_dream_job_here_discover_your_dream_job_herediscover_auth_screen">Browse our menu and enjoy a unique dining experience with just a few taps</string>
     <string name="login_auth_screen">Login</string>
     <string name="register_auth_screen">Register</string>
     <string name="name_item_details_screen">Name</string>
@@ -110,7 +110,7 @@
     <string name="profile_bottom_navigation_menu_owner">Profile</string>
     <string name="calories_item_customer">" Calories"</string>
     <string name="profile_tv_owner">Profile</string>
-    <string name="email_tv_owner">emad123@gmail.com</string>
+    <string name="email_tv_owner">admin123@gmail.com</string>
     <string name="edit_profile_tv_owner">Edit Profile</string>
     <string name="language_tv_owner">Language</string>
     <string name="dark_mood_tv_owner">Dark Mood</string>

@@ -53,11 +53,11 @@
                 style="@style/shadowText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:shadowColor="@color/colorPrimary"
                 android:text="@string/calories_tv_item_favorite"
                 android:textColor="@color/colorPrimary"
                 android:textSize="13sp"
-                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="@+id/nameItemTv"
                 app:layout_constraintTop_toBottomOf="@+id/nameItemTv" />
 
@@ -98,7 +98,7 @@
                 android:layout_height="24dp"
                 android:layout_margin="20dp"
                 android:elevation="5dp"
-                android:src="@drawable/heart_full"
+                android:src="@drawable/heart_y"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

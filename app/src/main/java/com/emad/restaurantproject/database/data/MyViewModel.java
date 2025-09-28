@@ -1,7 +1,6 @@
 package com.emad.restaurantproject.database.data;
 
 import android.app.Application;
-import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -16,8 +15,6 @@ import com.emad.restaurantproject.database.entities.OrderItem;
 import com.emad.restaurantproject.database.entities.User;
 
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.logging.Handler;
 
 public class MyViewModel extends AndroidViewModel {
 

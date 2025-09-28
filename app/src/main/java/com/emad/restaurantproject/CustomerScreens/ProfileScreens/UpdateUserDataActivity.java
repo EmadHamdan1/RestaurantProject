@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,9 +18,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.database.data.MyViewModel;
-import com.emad.restaurantproject.database.entities.MenuItem;
 import com.emad.restaurantproject.database.entities.User;
 import com.emad.restaurantproject.databinding.ActivityUpdateUserDataBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.concurrent.Executors;
 
@@ -116,9 +117,26 @@ public class UpdateUserDataActivity extends AppCompatActivity {
 
             if (imageUri != null) {
                 viewModel.updateUser(new User(getIntent().getIntExtra("userId", -1), name, email, password, imageUri));
-                ShowToast("Update User Successfully");
-            }
 
+                runOnUiThread(() -> {
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+                    builder.setTitle("Update Successful")
+                            .setIcon(R.drawable.success)
+                            .setMessage("Your account data has been updated successfully!")
+                            .setPositiveButton("OK", (dialog, which) -> {
+                                finish();
+                            });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                            .setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                });
+
+
+            }
 
         });
 
@@ -131,13 +149,6 @@ public class UpdateUserDataActivity extends AppCompatActivity {
             intent.setType("image/*");
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             launcher.launch(intent);
-        });
-    }
-
-    void ShowToast(String message) {
-        runOnUiThread(() -> {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-            finish();
         });
     }
 

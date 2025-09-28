@@ -33,7 +33,7 @@
         android:id="@+id/nextBt"
         style="@style/ElevatedButtonStyle"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_marginBottom="60dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/next_bt_welcome"
