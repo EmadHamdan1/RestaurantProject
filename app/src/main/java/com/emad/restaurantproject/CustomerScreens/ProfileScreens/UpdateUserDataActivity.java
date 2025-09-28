@@ -125,7 +125,6 @@ public class UpdateUserDataActivity extends AppCompatActivity {
                 else
                     viewModel.updateUser(new User(getIntent().getIntExtra("userId", -1), name, email, password, "customer", imageUri));
 
-
                 runOnUiThread(() -> {
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
                     builder.setTitle("Update Successful")
