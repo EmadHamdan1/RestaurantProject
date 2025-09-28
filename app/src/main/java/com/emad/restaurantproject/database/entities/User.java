@@ -31,12 +31,13 @@ public class User {
     }
 
     @Ignore
-    public User(int userId, String name, String email, String password, String photoUri) {
+    public User(int userId, String name, String email, String password, String userType,String photoUri) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.userId = userId;
         this.photoUri = photoUri;
+        this.userType = userType;
     }
 
     @Ignore

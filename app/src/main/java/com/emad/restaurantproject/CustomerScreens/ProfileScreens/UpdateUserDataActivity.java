@@ -78,6 +78,8 @@ public class UpdateUserDataActivity extends AppCompatActivity {
 
     }
 
+    String userType;
+
     void ShowOldData() {
 
         viewModel.getUserById(getIntent().getIntExtra("userId", -1)).observe(this, user -> {
@@ -85,6 +87,7 @@ public class UpdateUserDataActivity extends AppCompatActivity {
             binding.nameEtUpdateUser.setText(user.getName());
             binding.emailEtUpdateUser.setText(user.getEmail());
             binding.passwordEtAddUser.setText(user.getPassword());
+            userType = user.getUserType();
 
             if (user.getPhotoUri() != null && !user.getPhotoUri().isEmpty()) {
 
@@ -116,7 +119,12 @@ public class UpdateUserDataActivity extends AppCompatActivity {
         Executors.newSingleThreadExecutor().execute(() -> {
 
             if (imageUri != null) {
-                viewModel.updateUser(new User(getIntent().getIntExtra("userId", -1), name, email, password, imageUri));
+
+                if (userType.equalsIgnoreCase("owner"))
+                    viewModel.updateUser(new User(getIntent().getIntExtra("userId", -1), name, email, password, "owner", imageUri));
+                else
+                    viewModel.updateUser(new User(getIntent().getIntExtra("userId", -1), name, email, password, "customer", imageUri));
+
 
                 runOnUiThread(() -> {
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
