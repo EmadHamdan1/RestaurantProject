@@ -89,23 +89,24 @@ public class ForgetPasswordActivity extends AppCompatActivity {
 
                 userByEmail.setPassword(user.getPassword());
                 viewModel.updateUser(userByEmail);
+                runOnUiThread(() -> {
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+                    builder.setTitle(R.string.success_user)
+                            .setMessage(R.string.reset_password_successfully_user)
+                            .setIcon(R.drawable.success)
+                            .setPositiveButton(R.string.ok_user, (dialog, which) -> {
 
-                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-                builder.setTitle(R.string.success_user)
-                        .setMessage(R.string.reset_password_successfully_user)
-                        .setIcon(R.drawable.success)
-                        .setPositiveButton(R.string.ok_user, (dialog, which) -> {
+                                startActivity(new Intent(getBaseContext(), LoginActivity.class));
+                                finish();
 
-                            startActivity(new Intent(getBaseContext(), LoginActivity.class));
-                            finish();
+                            });
 
-                        });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
 
-                AlertDialog dialog = builder.create();
-                dialog.show();
-
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                        .setTextColor(getResources().getColor(R.color.colorPrimary));
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                            .setTextColor(getResources().getColor(R.color.colorPrimary));
+                });
 
                 finish();
             } else {
