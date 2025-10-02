@@ -111,7 +111,7 @@ public class UpdateUserDataActivity extends AppCompatActivity {
         String password = binding.passwordEtAddUser.getText().toString().trim();
 
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Fill The Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.fill_the_data_user), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -120,17 +120,14 @@ public class UpdateUserDataActivity extends AppCompatActivity {
 
             if (imageUri != null) {
 
-                if (userType.equalsIgnoreCase("owner"))
-                    viewModel.updateUser(new User(getIntent().getIntExtra("userId", -1), name, email, password, "owner", imageUri));
-                else
-                    viewModel.updateUser(new User(getIntent().getIntExtra("userId", -1), name, email, password, "customer", imageUri));
+                viewModel.updateUser(new User(getIntent().getIntExtra("userId", -1), name, email, password, userType, imageUri));
 
                 runOnUiThread(() -> {
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-                    builder.setTitle("Update Successful")
+                    builder.setTitle(R.string.update_successful_user)
                             .setIcon(R.drawable.success)
-                            .setMessage("Your account data has been updated successfully!")
-                            .setPositiveButton("OK", (dialog, which) -> {
+                            .setMessage(R.string.your_account_user)
+                            .setPositiveButton(R.string.ok_user, (dialog, which) -> {
                                 finish();
                             });
 

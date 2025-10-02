@@ -122,7 +122,7 @@ public class UpdateMenuItemActivity extends AppCompatActivity {
 
 
         if (name.isEmpty() || price.isEmpty() || calories.isEmpty() || imageUri == null || imageUri.isEmpty() || description.isEmpty()) {
-            Toast.makeText(this, "Fill The Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.fill_the_data_user, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -138,10 +138,10 @@ public class UpdateMenuItemActivity extends AppCompatActivity {
                     viewModel.updateMenuItem(new MenuItem(oldId.getMenuItemId(), name, Double.parseDouble(price), Integer.parseInt(calories), imageUri, categoryId, description));
                     runOnUiThread(() -> {
                         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-                        builder.setTitle("Update Successful")
+                        builder.setTitle(R.string.update_successful)
                                 .setIcon(R.drawable.success)
-                                .setMessage("Your Item data has been updated successfully!")
-                                .setPositiveButton("OK", (dialog, which) -> {
+                                .setMessage(R.string.your_item_data_has_been_updated_successfully)
+                                .setPositiveButton(R.string.ok_user, (dialog, which) -> {
                                     finish();
                                 });
 

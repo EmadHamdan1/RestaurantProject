@@ -75,15 +75,15 @@ public class LoginActivity extends AppCompatActivity {
     boolean isFieldsValid(User user) {
 
         if (user.getEmail().isEmpty() || user.getPassword().isEmpty()) {
-            Toast.makeText(this, "Fill The Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.fill_the_data_user, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(user.getEmail()).matches()) {
-            Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.invalid_email_format_user, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (user.getPassword().length() < 6) {
-            Toast.makeText(this, "Password too short", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.password_too_short_user, Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -121,12 +121,12 @@ public class LoginActivity extends AppCompatActivity {
                 User userByEmail = viewModel.getUserByEmail(user.getEmail());
 
                 if (userByEmail == null) {
-                    ShowToast("Email Not Correct");
+                    ShowToast(getString(R.string.email_not_correct_user));
                     return;
                 }
 
                 if (!userByEmail.getPassword().equals(user.getPassword())) {
-                    ShowToast("Password Not Correct");
+                    ShowToast(getString(R.string.password_not_correct_user));
                     return;
                 }
 
@@ -137,7 +137,6 @@ public class LoginActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("TAG", "LoginUser : " + e.getMessage());
             Toast.makeText(this, "Unexpected error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
 

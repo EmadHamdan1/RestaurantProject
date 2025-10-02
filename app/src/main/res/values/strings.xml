@@ -127,5 +127,36 @@
     <string name="are_you_sure_you_want_to_logout_tv">Are you sure you want to logout ?</string>
     <string name="cancel_bt">Cancel</string>
     <string name="yes_logout_bt">Yes, logout</string>
+    <string name="update_successful_user">Update Successful</string>
+    <string name="your_account_user">Your account data has been updated successfully!</string>
+    <string name="ok_user">OK</string>
+    <string name="fill_the_data_user">Fill The Data</string>
+    <string name="invalid_email_format_user">Invalid email format</string>
+    <string name="password_too_short_user">Password too short</string>
+    <string name="email_not_correct_user">Email Not Correct</string>
+    <string name="password_not_correct_user">Password Not Correct</string>
+    <string name="registration_successful_user">Registration successful</string>
+    <string name="success_user">Success</string>
+    <string name="registration_failed_user">Registration Failed</string>
+    <string name="user_already_exists_user">User already exists</string>
+    <string name="reset_password_successfully_user">Reset Password Successfully</string>
+    <string name="order_completed">Order Completed</string>
+    <string name="your_order_successfully">Your order has been completed successfully!</string>
+    <string name="the_cart_is_empty">The Cart is Empty</string>
+    <string name="your_order_is_completed">Your Order is Completed</string>
+    <string name="added_to_cart">Added to Cart</string>
+    <string name="the_product_has_been_successfully_added_to_your_cart">The product has been successfully added to your cart!</string>
+    <string name="pls_add_quantity">Pls Add Quantity</string>
+    <string name="cart_updated">Cart Updated</string>
+    <string name="the_quantity_has_been_updated_to">"The quantity has been updated to "</string>
+    <string name="item_added">Item Added</string>
+    <string name="the_menu_item_has_been_successfully_added">The menu item has been successfully added!</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="warning">Warning! If you delete this item, it will be removed from all orders and the entire system. Are you sure?</string>
+    <string name="delete">Delete</string>
+    <string name="the_item_has_been_successfully_deleted_from_the_system">The item has been successfully deleted from the system.</string>
+    <string name="cancel">Cancel</string>
+    <string name="update_successful">Update Successful</string>
+    <string name="your_item_data_has_been_updated_successfully">Your Item data has been updated successfully!</string>
 
 </resources>

@@ -210,6 +210,7 @@ public class HomeFragment extends Fragment implements ItemHomeListener {
 
         binding.cancelSearchIv.setOnClickListener(view -> {
             binding.searchEtHome.setText("");
+            binding.searchEtHome.clearFocus();
         });
     }
 

@@ -127,4 +127,36 @@
     <string name="are_you_sure_you_want_to_logout_tv">هل انت متأكد انك تريد الخروج </string>
     <string name="cancel_bt">الغاء</string>
     <string name="yes_logout_bt">نعم, خروج</string>
+    <string name="update_successful_user">تم التحديث بنجاح</string>
+    <string name="your_account_user">تم تحديث بيانات حسابك بنجاح!</string>
+    <string name="ok_user">موافق</string>
+    <string name="fill_the_data_user">الرجاء تعبئة البيانات</string>
+    <string name="invalid_email_format_user">صيغة البريد الإلكتروني غير صحيحة</string>
+    <string name="password_too_short_user">كلمة المرور قصيرة جداً</string>
+    <string name="email_not_correct_user">البريد الإلكتروني غير صحيح</string>
+    <string name="password_not_correct_user">كلمة المرور غير صحيحة</string>
+    <string name="registration_successful_user">تم التسجيل بنجاح</string>
+    <string name="success_user">نجاح</string>
+    <string name="registration_failed_user">فشل التسجيل</string>
+    <string name="user_already_exists_user">المستخدم موجود بالفعل</string>
+    <string name="reset_password_successfully_user">تمت إعادة تعيين كلمة المرور بنجاح</string>
+    <string name="order_completed">تم إكمال الطلب</string>
+    <string name="your_order_successfully">تم إكمال طلبك بنجاح!</string>
+    <string name="the_cart_is_empty">السلة فارغة</string>
+    <string name="your_order_is_completed">تم إكمال طلبك</string>
+    <string name="added_to_cart">تمت الإضافة إلى السلة</string>
+    <string name="the_product_has_been_successfully_added_to_your_cart">تمت إضافة المنتج إلى السلة بنجاح!</string>
+    <string name="pls_add_quantity">الرجاء إضافة الكمية</string>
+    <string name="cart_updated">تم تحديث السلة</string>
+    <string name="the_quantity_has_been_updated_to">"تم تحديث الكمية إلى "</string>
+    <string name="item_added">تمت إضافة العنصر</string>
+    <string name="the_menu_item_has_been_successfully_added">تمت إضافة عنصر القائمة بنجاح!</string>
+    <string name="delete_item">حذف العنصر</string>
+    <string name="warning">تحذير! إذا قمت بحذف هذا العنصر، سيتم حذفه من جميع الطلبات ومن النظام بالكامل. هل أنت متأكد؟</string>
+    <string name="delete">حذف</string>
+    <string name="the_item_has_been_successfully_deleted_from_the_system">تم حذف العنصر من النظام بنجاح.</string>
+    <string name="cancel">إلغاء</string>
+    <string name="update_successful">تم التحديث بنجاح</string>
+    <string name="your_item_data_has_been_updated_successfully">تم تحديث بيانات العنصر بنجاح!</string>
+
 </resources>

@@ -69,15 +69,15 @@ public class RegisterActivity extends AppCompatActivity {
     boolean isFieldsValid(User user) {
 
         if (user.getName().isEmpty() || user.getEmail().isEmpty() || user.getPassword().isEmpty()) {
-            Toast.makeText(this, "Fill The Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.fill_the_data_user, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(user.getEmail()).matches()) {
-            Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.invalid_email_format_user, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (user.getPassword().length() < 6) {
-            Toast.makeText(this, "Password too short", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.password_too_short_user, Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -94,17 +94,17 @@ public class RegisterActivity extends AppCompatActivity {
                 User userByEmail = viewModel.getUserByEmail(user.getEmail());
 
                 if (userByEmail != null) {
-                    showDialog("Registration Failed", "User already exists");
+                    showDialog(getString(R.string.registration_failed_user), getString(R.string.user_already_exists_user));
                 } else {
 
                     viewModel.insertUser(user);
 
                     runOnUiThread(() -> {
                         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-                        builder.setTitle("Success")
-                                .setMessage("Registration successful")
+                        builder.setTitle(R.string.success_user)
+                                .setMessage(R.string.registration_successful_user)
                                 .setIcon(R.drawable.success)
-                                .setPositiveButton("OK", (dialog, which) -> {
+                                .setPositiveButton(R.string.ok_user, (dialog, which) -> {
 
                                     runOnUiThread(this::ClearFieldsData);
 
@@ -127,7 +127,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("TAG", "CreateAccount: " + e.getMessage());
             Toast.makeText(this, "Unexpected error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
@@ -154,8 +153,8 @@ public class RegisterActivity extends AppCompatActivity {
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
             builder.setTitle(title)
                     .setMessage(message)
-                    .setIcon(R.drawable.success)
-                    .setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+                    .setIcon(R.drawable.warning)
+                    .setPositiveButton(R.string.ok_user, (dialog, which) -> dialog.dismiss());
 
             AlertDialog dialog = builder.create();
             dialog.show();

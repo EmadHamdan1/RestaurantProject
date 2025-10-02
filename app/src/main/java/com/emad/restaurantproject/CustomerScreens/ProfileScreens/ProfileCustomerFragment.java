@@ -35,6 +35,8 @@ public class ProfileCustomerFragment extends Fragment {
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == AppCompatActivity.RESULT_OK) {
                         requireActivity().recreate();
+                        requireActivity().finish();
+                        startActivity(requireActivity().getIntent());
                     }
                 }
             }

@@ -84,16 +84,21 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
         FragmentLiveCartBinding binding = FragmentLiveCartBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
 
+        // Handle Adapter
         adapter = new CartAdapter(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), this);
         binding.cartItemRv.setAdapter(adapter);
         binding.cartItemRv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
+        // get All Item
         viewModel.getAllMenuItems().observe(getViewLifecycleOwner(), adapter::updateMenuItems);
 
+        // get Cart Item By Customer Id
         viewModel.getCartItemByCustomerIdLive(userId).observe(getViewLifecycleOwner(), adapter::updateCartItems);
 
+        // get All Category
         viewModel.getAllCategories().observe(getViewLifecycleOwner(), adapter::setCategories);
 
+        // get Cart Items By customer Id
         viewModel.getCartItemByCustomerIdLive(userId).observe(getViewLifecycleOwner(), cartItems -> {
 
             binding.totalPriceTv.setText(String.valueOf(CalcTotalPrice(cartItems)));
@@ -102,6 +107,7 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
 
         new ItemTouchHelper(getItemTouchHelper()).attachToRecyclerView(binding.cartItemRv);
 
+        // Check out
         binding.checkoutBt.setOnClickListener(view -> {
             CheckoutOrder();
         });
@@ -192,10 +198,10 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
                 requireActivity().runOnUiThread(() -> {
 
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireActivity());
-                    builder.setTitle("Order Completed")
+                    builder.setTitle(R.string.order_completed)
                             .setIcon(R.drawable.success)
-                            .setMessage("Your order has been completed successfully!")
-                            .setPositiveButton("OK", (dialog, which) -> {
+                            .setMessage(R.string.your_order_successfully)
+                            .setPositiveButton(R.string.ok_user, (dialog, which) -> {
                             });
 
                     AlertDialog dialog = builder.create();
@@ -210,7 +216,7 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
 
             } else {
                 requireActivity().runOnUiThread(() -> {
-                    Toast.makeText(getContext(), "The Cart is Empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.the_cart_is_empty, Toast.LENGTH_SHORT).show();
                 });
             }
 
@@ -250,8 +256,8 @@ public class LiveCartFragment extends Fragment implements CartAdapter.CartQuanti
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireActivity(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.restaurant)
-                .setContentTitle("Completed Order")
-                .setContentText("Your Order is Completed")
+                .setContentTitle(getString(R.string.completed_order))
+                .setContentText(getString(R.string.your_order_is_completed))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true);
 

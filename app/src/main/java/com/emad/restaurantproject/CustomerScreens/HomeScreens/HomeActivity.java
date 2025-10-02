@@ -1,5 +1,8 @@
 package com.emad.restaurantproject.CustomerScreens.HomeScreens;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +18,8 @@ import com.emad.restaurantproject.CustomerScreens.ProfileScreens.ProfileCustomer
 import com.emad.restaurantproject.R;
 import com.emad.restaurantproject.databinding.ActivityHomeBinding;
 
+import java.util.Locale;
+
 public class HomeActivity extends AppCompatActivity {
 
     ActivityHomeBinding binding;
@@ -24,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     FavoriteFragment favoriteFragment;
     ProfileCustomerFragment profileCustomerFragment;
     private static final String keySelectedItem = "selected_item";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,51 +105,6 @@ public class HomeActivity extends AppCompatActivity {
         onClickBack();
 
     }
-
-//    void addAndHandleFragments() {
-//
-//
-//        HomeFragment homeFragment = HomeFragment.newInstance(userId);
-//        CartFragment cartFragment = CartFragment.newInstance(userId);
-//        FavoriteFragment favoriteFragment = FavoriteFragment.newInstance(userId);
-//        ProfileCustomerFragment profileCustomerFragment = ProfileCustomerFragment.newInstance(userId);
-//
-//        getSupportFragmentManager().beginTransaction().add(
-//                binding.customerContainerFragmentFl.getId(), homeFragment).commit();
-//
-//        getSupportFragmentManager().beginTransaction()
-//                .add(binding.customerContainerFragmentFl.getId(), profileCustomerFragment)
-//                .hide(profileCustomerFragment).commitNow();
-//
-//        getSupportFragmentManager().beginTransaction()
-//                .add(binding.customerContainerFragmentFl.getId(), cartFragment)
-//                .hide(cartFragment).commitNow();
-//
-//        getSupportFragmentManager().beginTransaction()
-//                .add(binding.customerContainerFragmentFl.getId(), favoriteFragment)
-//                .hide(favoriteFragment).commitNow();
-//
-//        binding.customerBottomNavigationBn.setOnItemSelectedListener(item -> {
-//
-//            if (item.getItemId() == R.id.homeItem) {
-//                getSupportFragmentManager().beginTransaction().hide(profileCustomerFragment).hide(cartFragment).hide(favoriteFragment)
-//                        .show(homeFragment).commit();
-//
-//            } else if (item.getItemId() == R.id.profileItem) {
-//                getSupportFragmentManager().beginTransaction().hide(homeFragment).hide(cartFragment).hide(favoriteFragment)
-//                        .show(profileCustomerFragment).commit();
-//
-//            } else if (item.getItemId() == R.id.cartItem) {
-//                getSupportFragmentManager().beginTransaction().hide(homeFragment).hide(profileCustomerFragment).hide(favoriteFragment)
-//                        .show(cartFragment).commit();
-//            } else if (item.getItemId() == R.id.favoriteItem) {
-//                getSupportFragmentManager().beginTransaction().hide(homeFragment).hide(profileCustomerFragment).hide(cartFragment)
-//                        .show(favoriteFragment).commit();
-//            }
-//            return true;
-//        });
-//
-//    }
 
     void onClickBack() {
 

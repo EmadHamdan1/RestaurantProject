@@ -18,26 +18,10 @@
 
     <color name="colorBackground">#FFFFFF</color>
 
+
     <style name="Theme.MyApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
     </style>
-
-    <style name="Theme.MyApp.Splash" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/colorBackground</item>
-
-        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="31">@drawable/restaurant</item>
-        <item name="android:windowSplashScreenBackground" tools:targetApi="31">@color/colorBackground</item>
-    </style>
-
-
-
-
-    <style name="Base.Theme.RestaurantProject" parent="Theme.Material3.DayNight.NoActionBar">
-
-    </style>
-
-    <style name="Theme.RestaurantProject" parent="Base.Theme.RestaurantProject" />
 
 
     <style name="TitleTextViewStyle">

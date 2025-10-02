@@ -46,6 +46,7 @@ public class ChooseLanguageActivity extends AppCompatActivity {
 
             setResult(RESULT_OK);
             finish();
+            startActivity(getIntent());
         });
 
 

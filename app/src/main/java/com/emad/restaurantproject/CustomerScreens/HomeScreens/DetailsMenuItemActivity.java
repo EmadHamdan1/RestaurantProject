@@ -64,7 +64,7 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
                     Integer.parseInt(binding.quantityTv.getText().toString()),
                     menuItem.getPrice(), getIntent().getIntExtra("customerId", -1)));
         else
-            Toast.makeText(this, "Pls Add Quantity", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.pls_add_quantity), Toast.LENGTH_SHORT).show();
     }
 
     public void addOrUpdateCartItem(CartItem newItem) {
@@ -76,7 +76,7 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
             if (cartItem == null) {
                 viewModel.insertCartItem(newItem);
 
-                showAlert("Added to Cart", "The product has been successfully added to your cart!", R.drawable.all);
+                showAlert(getString(R.string.added_to_cart), getString(R.string.the_product_has_been_successfully_added_to_your_cart), R.drawable.success);
 
             } else {
 
@@ -87,7 +87,7 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
                         cartItem.getCustomerId());
 
                 viewModel.updateCartItem(updatedItem);
-                showAlert("Cart Updated", "The quantity has been updated to " + updatedQuantity, R.drawable.all);
+                showAlert(getString(R.string.cart_updated), getString(R.string.the_quantity_has_been_updated_to) + updatedQuantity, R.drawable.success);
 
             }
         });
@@ -106,7 +106,7 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
         binding.nameMenuItemTv.setText(menuItem.getName());
 
         binding.priceItemTv.setText("$ " + menuItem.getPrice());
-        binding.caloriesItemTv.setText("🔥 " + menuItem.getCalories() + " Calories");
+        binding.caloriesItemTv.setText("🔥 " + menuItem.getCalories() + getString(R.string.calories_item_customer));
         binding.descriptionTv.setText(String.valueOf(menuItem.getDescription()));
 
         viewModel.getCategoryById(menuItem.getCategoryId()).observe(this, category -> {
@@ -136,7 +136,7 @@ public class DetailsMenuItemActivity extends AppCompatActivity {
             builder.setTitle(title)
                     .setIcon(iconRes)
                     .setMessage(message)
-                    .setPositiveButton("OK", (dialog, which) -> {
+                    .setPositiveButton(R.string.ok_user, (dialog, which) -> {
 
                     });
 

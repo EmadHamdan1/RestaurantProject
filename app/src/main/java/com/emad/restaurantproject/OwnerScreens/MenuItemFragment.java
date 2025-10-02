@@ -48,20 +48,20 @@ public class MenuItemFragment extends Fragment {
                 if (item != null) {
                     requireActivity().runOnUiThread(() -> {
                         new MaterialAlertDialogBuilder(requireActivity())
-                                .setTitle("Delete Item")
+                                .setTitle(R.string.delete_item)
                                 .setIcon(R.drawable.warning)
-                                .setMessage("Warning! If you delete this item, it will be removed from all orders and the entire system. Are you sure?")
-                                .setPositiveButton("Delete", (dialog, which) -> {
+                                .setMessage(R.string.warning)
+                                .setPositiveButton(getString(R.string.delete), (dialog, which) -> {
                                     viewModel.deleteMenuItem(item);
 
                                     new MaterialAlertDialogBuilder(requireActivity())
-                                            .setTitle("Deleted")
+                                            .setTitle(getString(R.string.delete))
                                             .setIcon(R.drawable.delete_dialog)
-                                            .setMessage("The item has been successfully deleted from the system.")
-                                            .setPositiveButton("OK", null)
+                                            .setMessage(R.string.the_item_has_been_successfully_deleted_from_the_system)
+                                            .setPositiveButton(R.string.ok_user, null)
                                             .show();
                                 })
-                                .setNegativeButton("Cancel", (dialog, which) -> {
+                                .setNegativeButton(R.string.cancel, (dialog, which) -> {
                                     dialog.dismiss();
                                 })
                                 .show();

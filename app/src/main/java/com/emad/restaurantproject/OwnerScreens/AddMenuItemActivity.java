@@ -90,7 +90,7 @@ public class AddMenuItemActivity extends AppCompatActivity {
 
 
         if (name.isEmpty() || price.isEmpty() || calories.isEmpty() || imageUri == null || imageUri.isEmpty() || description.isEmpty()) {
-            Toast.makeText(this, "Fill The Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.fill_the_data_user, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -104,10 +104,10 @@ public class AddMenuItemActivity extends AppCompatActivity {
 
                 runOnUiThread(() -> {
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-                    builder.setTitle("Item Added")
-                            .setMessage("The menu item has been successfully added!")
+                    builder.setTitle(R.string.item_added)
+                            .setMessage(R.string.the_menu_item_has_been_successfully_added)
                             .setIcon(R.drawable.success)
-                            .setPositiveButton("OK", (dialog, which) -> {
+                            .setPositiveButton(R.string.ok_user, (dialog, which) -> {
                                 dialog.dismiss();
                                 finish();
                             });
@@ -138,14 +138,6 @@ public class AddMenuItemActivity extends AppCompatActivity {
             intent.setType("image/*");
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             launcher.launch(intent);
-        });
-    }
-
-
-    void ShowToast(String message) {
-        runOnUiThread(() -> {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-            finish();
         });
     }
 

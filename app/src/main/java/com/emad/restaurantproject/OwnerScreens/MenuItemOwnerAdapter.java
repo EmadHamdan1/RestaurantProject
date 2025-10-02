@@ -2,6 +2,7 @@ package com.emad.restaurantproject.OwnerScreens;
 
 import android.annotation.SuppressLint;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 
 import android.view.ViewGroup;
@@ -62,7 +63,7 @@ public class MenuItemOwnerAdapter extends RecyclerView.Adapter<MenuItemOwnerAdap
         MenuItem item = menuItems.get(position);
 
         holder.nameItemTv.setText(item.getName());
-        holder.caloriesItemTv.setText("🔥 " + item.getCalories() + " Calories");
+        holder.caloriesItemTv.setText("🔥 " + item.getCalories() + holder.context.getString(R.string.calories_item_customer));
         holder.priceItemTv.setText("$ " + item.getPrice());
 
         Glide.with(holder.imageItemIv.getContext())
@@ -119,6 +120,7 @@ public class MenuItemOwnerAdapter extends RecyclerView.Adapter<MenuItemOwnerAdap
 
         TextView nameItemTv, caloriesItemTv, priceItemTv;
         ImageView imageItemIv, openMenuItemIv, categoryMenuItemIv;
+        Context context;
 
         public MenuItemViewHolder(ItemMenuItemOwnerBinding binding) {
             super(binding.getRoot());
@@ -129,6 +131,7 @@ public class MenuItemOwnerAdapter extends RecyclerView.Adapter<MenuItemOwnerAdap
             imageItemIv = binding.imageItemIv;
             openMenuItemIv = binding.openMenuItemIv;
             categoryMenuItemIv = binding.categoryMenuItemIv;
+            context = binding.getRoot().getContext();
 
         }
     }
