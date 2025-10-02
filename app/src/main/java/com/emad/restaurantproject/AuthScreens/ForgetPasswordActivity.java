@@ -107,8 +107,6 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE)
                             .setTextColor(getResources().getColor(R.color.colorPrimary));
                 });
-
-                finish();
             } else {
                 ShowToast(getString(R.string.email_not_correct_user));
             }
