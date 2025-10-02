@@ -43,7 +43,6 @@ public class ScreenSplash extends AppCompatActivity {
         });
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-
         viewModel.getAllCategories().observe(this, categories -> {
             viewModel.getAllMenuItems().observe(this, menuItems -> {
                 new Handler().postDelayed(() -> {
@@ -52,8 +51,6 @@ public class ScreenSplash extends AppCompatActivity {
                 }, 1000);
             });
         });
-
-
 
     }
 }

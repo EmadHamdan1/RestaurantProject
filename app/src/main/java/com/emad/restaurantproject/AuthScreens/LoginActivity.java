@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
     MyViewModel viewModel;
-
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     private final Executor executor = Executors.newSingleThreadExecutor();

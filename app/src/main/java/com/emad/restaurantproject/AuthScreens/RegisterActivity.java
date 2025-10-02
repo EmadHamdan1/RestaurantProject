@@ -63,7 +63,6 @@ public class RegisterActivity extends AppCompatActivity {
         String password = binding.passwordEtSignUp.getText().toString().trim();
 
         return new User(name, email, password, "customer");
-
     }
 
     boolean isFieldsValid(User user) {
@@ -91,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (!isFieldsValid(user)) return;
 
             executor.execute(() -> {
+
                 User userByEmail = viewModel.getUserByEmail(user.getEmail());
 
                 if (userByEmail != null) {
