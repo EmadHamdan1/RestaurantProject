@@ -132,7 +132,6 @@ public class ProfileOwnerFragment extends Fragment {
             });
 
             dialog.show();
-
         });
 
         return binding.getRoot();
